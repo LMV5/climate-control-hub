@@ -35,13 +35,14 @@ function FloorPlan() {
           shape="poly"
           coords="41,41,232,41,232,232,41,232"
           alt="bedroom"
+          //   href="/bedroom"
           style={{
             outline: hoveredArea === "bedroom" ? "2px solid red" : "none",
             cursor: "pointer",
           }}
           onMouseEnter={() => handleMouseEnter("bedroom")}
           onMouseLeave={handleMouseLeave}
-          //   onClick={() => handleAreaClick("bedroom")}
+          onClick={() => handleAreaClick("bedroom")}
         />
         <area
           shape="poly"
@@ -51,6 +52,7 @@ function FloorPlan() {
             outline: hoveredArea === "livingroom" ? "2px solid green" : "none",
             cursor: "pointer",
           }}
+          //   href="/livingroom"
           onMouseEnter={() => handleMouseEnter("livingroom")}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleAreaClick("livingroom")}
@@ -59,6 +61,7 @@ function FloorPlan() {
           shape="poly"
           coords="40,248,230,248,230,340,40,340"
           alt="bathroom"
+          //   href="/bathroom"
           style={{
             outline: hoveredArea === "bathroom" ? "2px solid blue" : "none",
             cursor: "pointer",
@@ -71,6 +74,7 @@ function FloorPlan() {
           shape="poly"
           coords="37,476,264,476,264,570,37,570"
           alt="hallway"
+          //   href="/hallway"
           style={{
             outline: hoveredArea === "hallway" ? "2px solid brown" : "none",
             cursor: "pointer",
