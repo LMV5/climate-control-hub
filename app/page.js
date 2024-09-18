@@ -4,6 +4,7 @@ import FloorPlan from "@/components/FloorPlan";
 import FloorPlanDetails from "@/components/FloorPlanDetails";
 
 export default function Page() {
+  // console.log(process.env.MONGODB_URI);
   return (
     <main>
       <h1>Hello! it's Climate Control Hub!</h1>

@@ -1,9 +1,22 @@
 import RoomDetails from "@/components/RoomDetails";
+import connectDB from "@/config/database";
+import { getRoom } from "@/utils/getRoom";
 
-export default function Page() {
+const Page = async ({ params }) => {
+  await connectDB();
+  const { roomId } = params;
+
+  const room = await getRoom(roomId);
+
+  if (!room) {
+    return <div>Room not found</div>;
+  }
+
   return (
     <div>
-      <RoomDetails />
+      <RoomDetails room={room} key={room._id} />
     </div>
   );
-}
+};
+
+export default Page;
