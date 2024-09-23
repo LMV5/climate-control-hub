@@ -1,5 +1,7 @@
 import NavBar from "@/components/NavBar";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "Climate Control Hub",
@@ -12,6 +14,7 @@ export default function RootLayout({ children }) {
       <body>
         <NavBar />
         {children}
+        <ToastContainer />
       </body>
     </html>
   );

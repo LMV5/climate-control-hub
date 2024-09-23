@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function EditDetailsForm({ room }) {
   const [isEditing, setIsEditing] = useState(false);
   const [temperature, setTemperature] = useState(room.currentTemperature);
   const [humidity, setHumidity] = useState(room.currentHumidity);
+  const [roomData, setRoomData] = useState(room);
 
   function handleEdit() {
     setIsEditing((prev) => !prev);
@@ -30,10 +32,33 @@ export default function EditDetailsForm({ room }) {
   async function handleSubmit(e) {
     e.preventDefault();
     setIsEditing(false);
-    console.log("Saving data:", { temperature, humidity });
+    // console.log("Saving data:", { temperature, humidity });
 
-    // try {
-    // } catch (error) {}
+    const updatedData = {
+      currentTemperature: temperature,
+      currentHumidity: humidity,
+    };
+
+    try {
+      const response = await fetch(`/api/room/${room._id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Cannot update parameters");
+      }
+
+      const updatedRoom = await response.json();
+      setRoomData(updatedRoom);
+
+      toast.success("Changes saved");
+    } catch (error) {
+      toast.error("Cannot update parameters");
+    }
   }
 
   return (
@@ -74,8 +99,8 @@ export default function EditDetailsForm({ room }) {
           </form>
         ) : (
           <div>
-            <h4>Temperature: {room.currentTemperature}</h4>
-            <h4>Humidity: {room.currentHumidity}</h4>
+            <h4>Temperature: {roomData.currentTemperature}</h4>
+            <h4>Humidity: {roomData.currentHumidity}</h4>
           </div>
         )}
       </div>
