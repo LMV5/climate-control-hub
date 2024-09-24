@@ -12,10 +12,6 @@ export const GET = async (request, { params }) => {
     const room = await getRoom(roomId);
 
     if (!room) return new Response("Room not found", { status: 404 });
-    const simplifiedRoom = {
-      ...room,
-      _id: room._id.toString(),
-    };
 
     return new Response(JSON.stringify(simplifiedRoom), { status: 200 });
   } catch (error) {
