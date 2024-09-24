@@ -14,23 +14,7 @@ export default async function Page() {
   return (
     <div>
       <h2>History</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Room</th>
-            <th>Date</th>
-            <th>Temperature</th>
-            <th>Humidity</th>
-            <th>Changed by</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {history.map((record, index) => (
-            <HistoryTable record={record} key={index} />
-          ))}
-        </tbody>
-      </table>
+      <HistoryTable history={history} />
     </div>
   );
 }
