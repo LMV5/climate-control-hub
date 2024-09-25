@@ -11,12 +11,15 @@ export const GET = async (request, { params }) => {
     await connectDB();
     const { roomId } = params;
     const room = await getRoom(roomId);
-    const roomHistory = await getRoomHistory(roomId);
+    // const roomHistory = await getRoomHistory(roomId);
 
     if (!room) return new Response("Room not found", { status: 404 });
-    if (!roomHistory) return new Response("History not found", { status: 404 });
-
-    return new Response(JSON.stringify({ room, roomHistory }), { status: 200 });
+    // if (!roomHistory) return new Response("History not found", { status: 404 });
+    const cleanRoom = {
+      ...room,
+      _id: room._id.toString(),
+    };
+    return new Response(JSON.stringify({ room: cleanRoom }), { status: 200 });
     // return new Response(JSON.stringify(room), { status: 200 });
   } catch (error) {
     return new Response("Something went wrong", { status: 500 });

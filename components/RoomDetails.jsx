@@ -1,8 +1,7 @@
 import EditDetailsForm from "./EditDetailsForm";
-// import RoomHistory from "./RoomHistory";
+import RoomHistory from "./RoomHistory";
 
-// function RoomDetails({ room, roomHistory }) {
-function RoomDetails({ room }) {
+function RoomDetails({ room, roomHistory }) {
   return (
     <div>
       <p>IMAGE</p>
