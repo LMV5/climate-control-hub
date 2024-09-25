@@ -1,7 +1,7 @@
-import { Schema, model, models, Types } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const HistorySchema = new Schema({
-  roomId: { type: Types.ObjectId, ref: "Room" },
+  roomId: { type: Schema.Types.ObjectId, ref: "Room" },
   temperature: Number,
   humidity: Number,
   changeAt: Date,

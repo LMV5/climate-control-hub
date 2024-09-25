@@ -17,6 +17,9 @@ export default function NavBar() {
       <Link href="/" className={`${pathname === "/" ? "active" : ""}`}>
         Home page
       </Link>
+      <Link href="/room" className={`${pathname === "/room" ? "active" : ""}`}>
+        Rooms
+      </Link>
       <Link
         href="/history"
         className={`${pathname === "/history" ? "active" : ""}`}

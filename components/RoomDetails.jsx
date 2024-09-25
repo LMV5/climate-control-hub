@@ -1,6 +1,7 @@
 import EditDetailsForm from "./EditDetailsForm";
-import RoomHistory from "./RoomHistory";
+// import RoomHistory from "./RoomHistory";
 
+// function RoomDetails({ room, roomHistory }) {
 function RoomDetails({ room }) {
   return (
     <div>
@@ -9,7 +10,7 @@ function RoomDetails({ room }) {
       <EditDetailsForm room={room} />
       <div>
         <button>History</button>
-        <RoomHistory />
+        {/* <RoomHistory roomHistory={roomHistory} /> */}
       </div>
     </div>
   );

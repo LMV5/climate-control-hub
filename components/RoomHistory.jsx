@@ -1,4 +1,12 @@
-export default function RoomHistory() {
+"use client";
+
+import connectDB from "@/config/database";
+
+export default async function RoomHistory({ roomHistory }) {
+  await connectDB();
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div>
       <h2>History</h2>
@@ -16,13 +24,21 @@ export default function RoomHistory() {
         </thead>
 
         <tbody>
-          <tr>
-            <td>Name</td>
-            <td>04/09/2024</td>
-            <td>23 &deg;C</td>
-            <td>45 %</td>
-            <td>Tom</td>
-          </tr>
+          {roomHistory.length > 0 ? (
+            roomHistory.map((record) => (
+              <tr key={record._id}>
+                <td>{record.roomId.name}</td>
+                <td>{new Date(record.changeAt).toLocaleDateString()}</td>
+                <td>{record.temperature} &deg;C</td>
+                <td>{record.humidity} %</td>
+                <td>{record.changeBy}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5">No history found</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

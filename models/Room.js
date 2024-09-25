@@ -17,6 +17,7 @@ const RoomSchema = new Schema({
   },
   updateAt: Date,
   updateBy: String,
+  coordinates: { type: String, required: true },
 });
 
 const Room = models.Room || model("Room", RoomSchema);

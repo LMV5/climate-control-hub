@@ -1,6 +1,8 @@
-import History from "@/models/History";
+// import History from "@/models/History";
 
-export const getHistory = async () => {
-  const history = await History.find().populate("roomId", "name").lean();
-  return history;
-};
+// export const getHistory = async (roomId) => {
+//   const history = await History.find({ roomId })
+//     .populate("roomId", "name")
+//     .lean();
+//   return history;
+// };
