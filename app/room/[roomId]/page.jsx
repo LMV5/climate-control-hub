@@ -8,8 +8,8 @@ const Page = async ({ params }) => {
   const { roomId } = params;
 
   const room = await getRoom(roomId);
-  // const roomHistory = await getRoomHistory(roomId);
-  // console.log(roomHistory);
+  const roomHistory = await getRoomHistory(roomId);
+  console.log(roomHistory);
   // console.log(room);
 
   if (!room) {
