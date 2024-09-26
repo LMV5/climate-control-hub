@@ -10,7 +10,6 @@ const Page = async ({ params }) => {
   const room = await getRoom(roomId);
   const roomHistory = await getRoomHistory(roomId);
   console.log(roomHistory);
-  // console.log(room);
 
   if (!room) {
     return <div>Room not found</div>;
@@ -18,13 +17,12 @@ const Page = async ({ params }) => {
 
   const cleanRoom = {
     ...room,
-    _id: room._id.toString(),
+    _id: room._id,
   };
 
   return (
     <div>
-      {/* <RoomDetails room={room} roomHistory={roomHistory} /> */}
-      <RoomDetails room={cleanRoom} />
+      <RoomDetails room={cleanRoom} roomHistory={roomHistory} />
     </div>
   );
 };

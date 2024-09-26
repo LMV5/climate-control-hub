@@ -32,7 +32,6 @@ export default function EditDetailsForm({ room }) {
   async function handleSubmit(e) {
     e.preventDefault();
     setIsEditing(false);
-    // console.log("Saving data:", { temperature, humidity });
 
     const updatedData = {
       currentTemperature: temperature,

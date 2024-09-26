@@ -1,11 +1,9 @@
-"use client";
-
-import connectDB from "@/config/database";
-
 export default async function RoomHistory({ roomHistory }) {
-  await connectDB();
+  console.log(roomHistory);
 
-  if (loading) return <div>Loading...</div>;
+  if (!roomHistory) {
+    return <p>No history available</p>;
+  }
 
   return (
     <div>
@@ -23,17 +21,17 @@ export default async function RoomHistory({ roomHistory }) {
           </tr>
         </thead>
 
-        {/* <tbody>
+        <tbody>
           {roomHistory.map((record) => (
             <tr key={record._id}>
-              <td>{record.roomId.name}</td>
+              <td>{record.roomId}</td>
               <td>{new Date(record.changeAt).toLocaleDateString()}</td>
               <td>{record.temperature} &deg;C</td>
               <td>{record.humidity} %</td>
               <td>{record.changeBy}</td>
             </tr>
           ))}
-        </tbody> */}
+        </tbody>
       </table>
     </div>
   );

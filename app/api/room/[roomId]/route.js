@@ -18,18 +18,12 @@ export const GET = async (request, { params }) => {
 
     const cleanRoom = {
       ...room,
-      _id: room._id.toString(),
+      _id: room._id,
     };
 
-    const cleanHistory = {
-      ...roomHistory,
-      _id: roomHistory._id.toString(),
-    };
-
-    return new Response(
-      JSON.stringify({ room: cleanRoom, roomHistory: cleanHistory }),
-      { status: 200 }
-    );
+    return new Response(JSON.stringify({ room: cleanRoom, roomHistory }), {
+      status: 200,
+    });
   } catch (error) {
     return new Response("Something went wrong", { status: 500 });
   }

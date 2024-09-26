@@ -9,7 +9,7 @@ function RoomDetails({ room, roomHistory }) {
       <EditDetailsForm room={room} />
       <div>
         <button>History</button>
-        {/* <RoomHistory roomHistory={roomHistory} /> */}
+        <RoomHistory roomHistory={roomHistory} />
       </div>
     </div>
   );
