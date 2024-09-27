@@ -1,5 +1,7 @@
-export default async function RoomHistory({ roomHistory }) {
-  console.log(roomHistory);
+export default async function RoomHistory({ roomId, roomHistory }) {
+  if (roomHistory.length === 0) {
+    return <p>No history available</p>;
+  }
 
   if (!roomHistory) {
     return <p>No history available</p>;
@@ -8,12 +10,9 @@ export default async function RoomHistory({ roomHistory }) {
   return (
     <div>
       <h2>History</h2>
-      <h3>Name of the room</h3>
-
       <table>
         <thead>
           <tr>
-            <th>Room</th>
             <th>Date</th>
             <th>Temperature</th>
             <th>Humidity</th>
@@ -24,7 +23,6 @@ export default async function RoomHistory({ roomHistory }) {
         <tbody>
           {roomHistory.map((record) => (
             <tr key={record._id}>
-              <td>{record.roomId}</td>
               <td>{new Date(record.changeAt).toLocaleDateString()}</td>
               <td>{record.temperature} &deg;C</td>
               <td>{record.humidity} %</td>
