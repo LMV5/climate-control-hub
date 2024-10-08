@@ -1,20 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-export default function Settings() {
-  const [temperatureUnit, setTemperatureUnit] = useState("Celsius");
-  const [language, setLanguage] = useState("en");
+export default function Settings({ settingsData }) {
+  const [temperatureUnit, setTemperatureUnit] = useState(
+    settingsData?.temperatureUnit || "Celsius"
+  );
+  const [language, setLanguage] = useState(settingsData?.language || "en");
   const [temperatureRange, setTemperatureRange] = useState({
-    min: 16,
-    max: 26,
+    min: settingsData?.temperatureRange?.min || 16,
+    max: settingsData?.temperatureRange?.min || 26,
   });
   const [humidityRange, setHumidityRange] = useState({
-    min: 30,
-    max: 60,
+    min: settingsData?.humidityRange?.min || 30,
+    max: settingsData?.humidityRange?.min || 60,
   });
-  const [settings, setSettings] = useState({});
+  // const [settings, setSettings] = useState({});
+
+  useEffect(() => {
+    async function fetchSettings() {
+      try {
+        const response = await fetch("/api/settings", {
+          method: "GET",
+        });
+
+        if (!response.ok) throw new Error("Failed to fetch settings");
+
+        const data = await response.json();
+        if (data.length > 0) {
+          const settings = data[0];
+          setTemperatureUnit(settings.temperatureUnit);
+          setLanguage(settings.language);
+          setTemperatureRange(settings.temperatureRange);
+          setHumidityRange(settings.humidityRange);
+        }
+      } catch (error) {
+        toast.error("Error fetching settings");
+      }
+    }
+
+    fetchSettings();
+  }, []);
 
   function handleTemperatureUnit(e) {
     setTemperatureUnit(e.target.value);
@@ -40,24 +67,6 @@ export default function Settings() {
     }));
   };
 
-  //   useEffect(() => {
-  //     const fetchSettings = async () => {
-  //       try {
-  //         const response = await fetch(`/api/room/settings`);
-  //         if (!response.ok) {
-  //           throw new Error("Failed to fetch settings");
-  //         }
-  //         const data = await response.json();
-  //         setSettings(data[0]);
-  //       } catch (error) {
-  //         toast.error("Cannot load settings");
-  //         console.error(error);
-  //       }
-  //     };
-
-  //     fetchSettings();
-  //   }, []);
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -76,8 +85,6 @@ export default function Settings() {
         },
         body: JSON.stringify(updatedData),
       });
-
-      setSettings(updatedData);
 
       if (!response.ok) {
         throw new Error("Cannot save settings");

@@ -1,7 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
 const SettingsSchema = new Schema({
-  //   roomId: { type: Schema.Types.ObjectId, ref: "Room" },
   language: { type: String, default: "en" },
   temperatureUnit: { type: String, default: "Celsius" },
   temperatureRange: {
