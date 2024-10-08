@@ -1,16 +1,16 @@
 import { Schema, model, models } from "mongoose";
 
 const SettingsSchema = new Schema({
-  roomId: { type: Schema.Types.ObjectId, ref: "Room" },
+  //   roomId: { type: Schema.Types.ObjectId, ref: "Room" },
   language: { type: String, default: "en" },
   temperatureUnit: { type: String, default: "Celsius" },
   temperatureRange: {
-    min: Number,
-    max: Number,
+    min: { type: Number, default: 16 },
+    max: { type: Number, default: 26 },
   },
   humidityRange: {
-    min: Number,
-    max: Number,
+    min: { type: Number, default: 30 },
+    max: { type: Number, default: 60 },
   },
 });
 
