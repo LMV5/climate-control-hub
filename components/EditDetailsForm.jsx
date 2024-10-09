@@ -2,15 +2,17 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { convertToFahrenheit } from "@/utils/helpers";
 
 const defaultTemperatureRange = { min: 16, max: 26 };
 const defaultHumidityRange = { min: 30, max: 60 };
 
-export default function EditDetailsForm({ room }) {
+export default function EditDetailsForm({ room, settings }) {
   const [isEditing, setIsEditing] = useState(false);
   const [temperature, setTemperature] = useState(room.currentTemperature);
   const [humidity, setHumidity] = useState(room.currentHumidity);
   const [roomData, setRoomData] = useState(room);
+  const temperatureUnit = settings?.temperatureUnit;
 
   function handleEdit() {
     setIsEditing((prev) => !prev);
@@ -49,7 +51,10 @@ export default function EditDetailsForm({ room }) {
     setIsEditing(false);
 
     const updatedData = {
-      currentTemperature: temperature,
+      currentTemperature:
+        temperatureUnit === "Fahrenheit"
+          ? convertToFahrenheit(temperature)
+          : temperature,
       currentHumidity: humidity,
     };
 
@@ -102,7 +107,13 @@ export default function EditDetailsForm({ room }) {
           </form>
         ) : (
           <div>
-            <h4>Temperature: {roomData.currentTemperature}</h4>
+            <h4>
+              Temperature:{" "}
+              {temperatureUnit === "Fahrenheit"
+                ? convertToFahrenheit(roomData.currentTemperature)
+                : roomData.currentTemperature}
+              {temperatureUnit === "Fahrenheit" ? " °F" : " °C"}
+            </h4>
             <h4>Humidity: {roomData.currentHumidity}</h4>
           </div>
         )}
