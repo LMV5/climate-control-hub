@@ -8,15 +8,15 @@ export default function Settings({ settingsData }) {
     settingsData?.temperatureUnit || "Celsius"
   );
   const [language, setLanguage] = useState(settingsData?.language || "en");
-  const [temperatureRange, setTemperatureRange] = useState({
-    min: settingsData?.temperatureRange?.min || 16,
-    max: settingsData?.temperatureRange?.min || 26,
-  });
-  const [humidityRange, setHumidityRange] = useState({
-    min: settingsData?.humidityRange?.min || 30,
-    max: settingsData?.humidityRange?.min || 60,
-  });
-  // const [settings, setSettings] = useState({});
+  // const [temperatureRange, setTemperatureRange] = useState({
+  //   min: settingsData?.temperatureRange?.min || 16,
+  //   max: settingsData?.temperatureRange?.min || 26,
+  // });
+  // const [humidityRange, setHumidityRange] = useState({
+  //   min: settingsData?.humidityRange?.min || 30,
+  //   max: settingsData?.humidityRange?.min || 60,
+  // });
+  const [settings, setSettings] = useState({});
 
   useEffect(() => {
     async function fetchSettings() {
@@ -28,12 +28,13 @@ export default function Settings({ settingsData }) {
         if (!response.ok) throw new Error("Failed to fetch settings");
 
         const data = await response.json();
+
         if (data.length > 0) {
           const settings = data[0];
           setTemperatureUnit(settings.temperatureUnit);
           setLanguage(settings.language);
-          setTemperatureRange(settings.temperatureRange);
-          setHumidityRange(settings.humidityRange);
+          // setTemperatureRange(settings.temperatureRange);
+          // setHumidityRange(settings.humidityRange);
         }
       } catch (error) {
         toast.error("Error fetching settings");
@@ -51,29 +52,29 @@ export default function Settings({ settingsData }) {
     setLanguage(e.target.value);
   }
 
-  const handleTemperatureRangeChange = (e) => {
-    const { name, value } = e.target;
-    setTemperatureRange((prevRange) => ({
-      ...prevRange,
-      [name]: parseInt(value),
-    }));
-  };
+  // const handleTemperatureRangeChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setTemperatureRange((prevRange) => ({
+  //     ...prevRange,
+  //     [name]: parseInt(value),
+  //   }));
+  // };
 
-  const handleHumidityRangeChange = (e) => {
-    const { name, value } = e.target;
-    setHumidityRange((prevRange) => ({
-      ...prevRange,
-      [name]: parseInt(value),
-    }));
-  };
+  // const handleHumidityRangeChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setHumidityRange((prevRange) => ({
+  //     ...prevRange,
+  //     [name]: parseInt(value),
+  //   }));
+  // };
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     const updatedData = {
       temperatureUnit,
-      temperatureRange,
-      humidityRange,
+      // temperatureRange,
+      // humidityRange,
       language,
     };
 
@@ -121,7 +122,7 @@ export default function Settings({ settingsData }) {
         </label>
       </div>
 
-      <div>
+      {/* <div>
         <p>Temperature Range</p>
         <label>
           Min:
@@ -173,7 +174,7 @@ export default function Settings({ settingsData }) {
             onChange={handleHumidityRangeChange}
           />
         </label>
-      </div>
+      </div> */}
 
       <div>
         <p>Language</p>

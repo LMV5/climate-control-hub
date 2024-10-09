@@ -9,7 +9,6 @@ const Page = async ({ params }) => {
 
   const room = await getRoom(roomId);
   const roomHistory = await getRoomHistory(roomId);
-  console.log(roomHistory);
 
   if (!room) {
     return <div>Room not found</div>;

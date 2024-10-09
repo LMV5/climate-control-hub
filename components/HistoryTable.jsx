@@ -10,10 +10,10 @@ export default function HistoryTable({ history }) {
   const [sortOption, setSortOption] = useState("");
 
   const historyArray = convertObjectToArray(history);
-
+  // console.log(historyArray);
   const sortedHistory = [...historyArray].sort((a, b) => {
     if (sortOption === "date") {
-      return b.changeAt - a.changeAt;
+      return new Date(b.changeAt) - new Date(a.changeAt);
     } else if (sortOption === "room") {
       return a.roomId.name.localeCompare(b.roomId.name);
     }

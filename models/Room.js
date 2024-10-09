@@ -4,17 +4,6 @@ const RoomSchema = new Schema({
   name: String,
   currentTemperature: Number,
   currentHumidity: Number,
-  settings: {
-    temperatureUnit: String,
-    temperatureRange: {
-      min: Number,
-      max: Number,
-    },
-    humidityRange: {
-      min: Number,
-      max: Number,
-    },
-  },
   updateAt: Date,
   updateBy: String,
   coordinates: { type: String, required: true },

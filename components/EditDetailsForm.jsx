@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
+const defaultTemperatureRange = { min: 16, max: 26 };
+const defaultHumidityRange = { min: 30, max: 60 };
+
 export default function EditDetailsForm({ room }) {
   const [isEditing, setIsEditing] = useState(false);
   const [temperature, setTemperature] = useState(room.currentTemperature);
@@ -13,20 +16,32 @@ export default function EditDetailsForm({ room }) {
     setIsEditing((prev) => !prev);
   }
 
-  function increaseTemperature() {
-    setTemperature((prev) => prev + 1);
+  function handleTemperatureChange(e) {
+    const newTemperature = +e.target.value;
+
+    if (newTemperature < defaultTemperatureRange.min) {
+      toast.error("Temperature cannot be lower than the minimum allowed value");
+      setTemperature(defaultTemperatureRange.min);
+    } else if (newTemperature > defaultTemperatureRange.max) {
+      toast.error("Temperature exceeds the maximum allowed value");
+      setTemperature(defaultTemperatureRange.max);
+    } else {
+      setTemperature(newTemperature);
+    }
   }
 
-  function decreaseTemperature() {
-    setTemperature((prev) => prev - 1);
-  }
+  function handleHumidityChange(e) {
+    const newHumidity = +e.target.value;
 
-  function increaseHumidity() {
-    setHumidity((prev) => prev + 1);
-  }
-
-  function decreaseHumidity() {
-    setHumidity((prev) => prev - 1);
+    if (newHumidity < defaultHumidityRange.min) {
+      toast.error("Humidity cannot be lower than the minimum allowed value");
+      setHumidity(defaultHumidityRange.min);
+    } else if (newHumidity > defaultHumidityRange.max) {
+      toast.error("Humidity exceeds the maximum allowed value");
+      setHumidity(defaultHumidityRange.max);
+    } else {
+      setHumidity(newHumidity);
+    }
   }
 
   async function handleSubmit(e) {
@@ -71,29 +86,18 @@ export default function EditDetailsForm({ room }) {
               <input
                 type="number"
                 value={temperature}
-                onChange={(e) => setTemperature(+e.target.value)}
+                onChange={handleTemperatureChange}
               />
             </h4>
-            <button type="button" onClick={decreaseTemperature}>
-              -
-            </button>
-            <button type="button" onClick={increaseTemperature}>
-              +
-            </button>
             <h4>
               Humidity:{" "}
               <input
                 type="number"
+                step={5}
                 value={humidity}
-                onChange={(e) => setHumidity(+e.target.value)}
+                onChange={handleHumidityChange}
               />
             </h4>
-            <button type="button" onClick={decreaseHumidity}>
-              -
-            </button>
-            <button type="button" onClick={increaseHumidity}>
-              +
-            </button>
             <button type="submit">Save</button>
           </form>
         ) : (
