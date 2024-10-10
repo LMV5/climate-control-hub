@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { convertToFahrenheit } from "@/utils/helpers";
-
-const defaultTemperatureRange = { min: 16, max: 26 };
-const defaultHumidityRange = { min: 30, max: 60 };
 
 export default function EditDetailsForm({ room, settings }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -13,10 +10,28 @@ export default function EditDetailsForm({ room, settings }) {
   const [humidity, setHumidity] = useState(room.currentHumidity);
   const [roomData, setRoomData] = useState(room);
   const temperatureUnit = settings?.temperatureUnit;
+  const temperatureRanges = {
+    Celsius: { min: 16, max: 26 },
+    Fahrenheit: { min: 60.8, max: 78.8 },
+  };
+  const defaultHumidityRange = { min: 30, max: 60 };
+  const defaultTemperatureRange = temperatureRanges[temperatureUnit];
 
   function handleEdit() {
     setIsEditing((prev) => !prev);
   }
+
+  useEffect(() => {
+    if (settings.temperatureUnit === "Fahrenheit") {
+      if (
+        room.currentTemperature !== convertToFahrenheit(room.currentTemperature)
+      ) {
+        setTemperature(convertToFahrenheit(room.currentTemperature));
+      }
+    } else {
+      setTemperature(room.currentTemperature);
+    }
+  }, [settings.temperatureUnit, room.currentTemperature]);
 
   function handleTemperatureChange(e) {
     const newTemperature = +e.target.value;
@@ -51,10 +66,7 @@ export default function EditDetailsForm({ room, settings }) {
     setIsEditing(false);
 
     const updatedData = {
-      currentTemperature:
-        temperatureUnit === "Fahrenheit"
-          ? convertToFahrenheit(temperature)
-          : temperature,
+      currentTemperature: temperature,
       currentHumidity: humidity,
     };
 
@@ -110,8 +122,8 @@ export default function EditDetailsForm({ room, settings }) {
             <h4>
               Temperature:{" "}
               {temperatureUnit === "Fahrenheit"
-                ? convertToFahrenheit(roomData.currentTemperature)
-                : roomData.currentTemperature}
+                ? temperature.toFixed(1)
+                : roomData.currentTemperature.toFixed(1)}
               {temperatureUnit === "Fahrenheit" ? " °F" : " °C"}
             </h4>
             <h4>Humidity: {roomData.currentHumidity}</h4>
