@@ -4,9 +4,6 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export default function Settings({ settingsData }) {
-  const [temperatureUnit, setTemperatureUnit] = useState(
-    settingsData?.temperatureUnit || "Celsius"
-  );
   const [language, setLanguage] = useState(settingsData?.language || "en");
 
   useEffect(() => {
@@ -22,7 +19,6 @@ export default function Settings({ settingsData }) {
 
         if (data.length > 0) {
           const settings = data[0];
-          setTemperatureUnit(settings.temperatureUnit);
           setLanguage(settings.language);
         }
       } catch (error) {
@@ -33,10 +29,6 @@ export default function Settings({ settingsData }) {
     fetchSettings();
   }, []);
 
-  function handleTemperatureUnit(e) {
-    setTemperatureUnit(e.target.value);
-  }
-
   function handleLanguageChange(e) {
     setLanguage(e.target.value);
   }
@@ -45,7 +37,6 @@ export default function Settings({ settingsData }) {
     e.preventDefault();
 
     const updatedData = {
-      temperatureUnit,
       language,
     };
 
@@ -71,7 +62,7 @@ export default function Settings({ settingsData }) {
     <form onSubmit={handleSubmit}>
       <h3>Settings</h3>
 
-      <div>
+      {/* <div>
         <p>Temperature Unit</p>
         <label>
           <input
@@ -91,7 +82,7 @@ export default function Settings({ settingsData }) {
           />
           Fahrenheit
         </label>
-      </div>
+      </div> */}
 
       <div>
         <p>Language</p>

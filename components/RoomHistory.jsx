@@ -1,4 +1,4 @@
-export default async function RoomHistory({ roomId, roomHistory }) {
+export default async function RoomHistory({ roomHistory }) {
   if (roomHistory.length === 0) {
     return <p>No history available</p>;
   }
@@ -21,14 +21,16 @@ export default async function RoomHistory({ roomId, roomHistory }) {
         </thead>
 
         <tbody>
-          {roomHistory.map((record) => (
-            <tr key={record._id}>
-              <td>{new Date(record.changeAt).toLocaleDateString()}</td>
-              <td>{record.temperature} &deg;C</td>
-              <td>{record.humidity} %</td>
-              <td>{record.changeBy}</td>
-            </tr>
-          ))}
+          {roomHistory.map((record) => {
+            return (
+              <tr key={record._id}>
+                <td>{new Date(record.changeAt).toLocaleDateString()}</td>
+                <td>{record.temperature} &deg; C</td>
+                <td>{record.humidity} %</td>
+                <td>{record.changeBy}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -33,9 +33,9 @@ export const PUT = async (request) => {
       {},
       {
         language: updatedData.language,
-        temperatureUnit: updatedData.temperatureUnit,
-        temperatureRange: updatedData.temperatureRange,
-        humidityRange: updatedData.humidityRange,
+        // temperatureUnit: updatedData.temperatureUnit,
+        // temperatureRange: updatedData.temperatureRange,
+        // humidityRange: updatedData.humidityRange,
       },
       { new: true, upsert: true }
     );

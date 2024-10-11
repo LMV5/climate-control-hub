@@ -8,7 +8,7 @@ function RoomDetails({ room, roomHistory, settings }) {
       <p>{room.name}</p>
       <EditDetailsForm room={room} settings={settings} />
       <div>
-        <RoomHistory roomHistory={roomHistory} />
+        <RoomHistory roomHistory={roomHistory} settings={settings} />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { Schema, model, models } from "mongoose";
 
 const SettingsSchema = new Schema({
   language: { type: String, default: "en" },
-  temperatureUnit: { type: String, default: "Celsius" },
+  // temperatureUnit: { type: String, default: "Celsius" },
   // temperatureRange: {
   //   min: { type: Number, default: 16 },
   //   max: { type: Number, default: 26 },

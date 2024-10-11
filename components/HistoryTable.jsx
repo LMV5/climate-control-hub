@@ -6,11 +6,10 @@ const convertObjectToArray = (obj) => {
   return Object.values(obj);
 };
 
-export default function HistoryTable({ history }) {
+export default function HistoryTable({ history, settings }) {
   const [sortOption, setSortOption] = useState("");
-
   const historyArray = convertObjectToArray(history);
-  // console.log(historyArray);
+
   const sortedHistory = [...historyArray].sort((a, b) => {
     if (sortOption === "date") {
       return new Date(b.changeAt) - new Date(a.changeAt);
@@ -66,7 +65,7 @@ function HistoryRow({ record }) {
     <tr>
       <td>{record.roomId.name}</td>
       <td>{new Date(record.changeAt).toLocaleDateString()}</td>
-      <td>{record.temperature} &deg;C</td>
+      <td>{record.temperature} &deg; C</td>
       <td>{record.humidity} %</td>
       <td>{record.changeBy}</td>
     </tr>
