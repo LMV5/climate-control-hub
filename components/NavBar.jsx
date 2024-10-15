@@ -9,35 +9,51 @@ const StyledNav = styled.nav`
   gap: 2rem;
 `;
 
+const StyledLink = styled(Link)`
+  position: relative;
+  padding: 0.5rem 1rem;
+  color: white;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0.1rem;
+    bottom: 0;
+    left: 0;
+    background-color: #cef7a0;
+    transition: width 0.4s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &[data-active="true"]::after {
+    width: 100%;
+  }
+`;
+
 export default function NavBar() {
   const pathname = usePathname();
 
   return (
     <StyledNav>
-      <Link href="/" className={`${pathname === "/" ? "active" : ""}`}>
+      <StyledLink href="/" data-active={pathname === "/"}>
         Home page
-      </Link>
-      <Link href="/room" className={`${pathname === "/room" ? "active" : ""}`}>
+      </StyledLink>
+      <StyledLink
+        href="/room"
+        data-active={pathname === "/room" || pathname.startsWith("/room/")}
+      >
         Rooms
-      </Link>
-      <Link
-        href="/history"
-        className={`${pathname === "/history" ? "active" : ""}`}
-      >
+      </StyledLink>
+      <StyledLink href="/history" data-active={pathname === "/history"}>
         History
-      </Link>
-      <Link
-        href="/settings"
-        className={`${pathname === "/settings" ? "active" : ""}`}
-      >
+      </StyledLink>
+      <StyledLink href="/settings" data-active={pathname === "/settings"}>
         Settings
-      </Link>
-      {/* <Link
-        href="/login"
-        className={`${pathname === "/login" ? "active" : ""}`}
-      >
-        Login
-      </Link> */}
+      </StyledLink>
     </StyledNav>
   );
 }

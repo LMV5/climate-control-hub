@@ -98,7 +98,7 @@ export default function EditDetailsForm({ room }) {
                 onChange={handleHumidityChange}
               />
             </h4>
-            <Button type="submit" variant="save">
+            <Button type="submit" variant="primary">
               Save
             </Button>
           </form>

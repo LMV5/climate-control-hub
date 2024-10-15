@@ -7,27 +7,28 @@ const StyledButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 6px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease-in;
 
   background-color: ${(props) =>
-    props.$variant === "save"
+    props.$variant === "primary"
       ? "#F3F9D2"
-      : props.variant === "edit"
+      : props.$variant === "edit"
       ? "#007bff"
-      : props.variant === "cancel"
+      : props.$variant === "cancel"
       ? "#dc3545"
-      : props.variant === "back"
+      : props.$variant === "back"
       ? "#dc3545"
       : "#6c757d"};
 
   &:hover {
     background-color: ${(props) =>
-      props.$variant === "save"
+      props.$variant === "primary"
         ? "#A4F9C8"
-        : props.variant === "edit"
+        : props.$variant === "edit"
         ? "#007bff"
-        : props.variant === "cancel"
+        : props.$variant === "cancel"
         ? "#dc3545"
-        : props.variant === "back"
+        : props.$variant === "back"
         ? "#dc3545"
         : "#6c757d"};
   }

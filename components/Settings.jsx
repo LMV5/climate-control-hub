@@ -23,11 +23,9 @@ const FormTitle = styled.h2`
 const RangeSection = styled.div`
   margin-bottom: 20px;
   padding: 10px;
-  background-color: #0d0c1d;
   border-radius: 5px;
   box-shadow: 0 1px 5px rgba(178, 178, 178, 0.2);
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
 `;
@@ -43,6 +41,7 @@ const P = styled.p`
   grid-column: span 2;
   font-size: 1.1rem;
   letter-spacing: 0.2rem;
+  color: #ebd8da;
 `;
 
 const Input = styled.input`
@@ -202,7 +201,7 @@ export default function Settings({ settingsData }) {
       </RangeSection>
 
       <ButtonContainer>
-        <Button type="submit" variant="save">
+        <Button type="submit" variant="primary">
           Save
         </Button>
       </ButtonContainer>
