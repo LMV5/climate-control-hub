@@ -11,8 +11,8 @@ export default async function Page() {
   }
 
   return (
-    <div>
+    <>
       <Settings settingsData={settings} />
-    </div>
+    </>
   );
 }

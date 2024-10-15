@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import styled from "styled-components";
+import Button from "./Button";
 
 export default function Settings({ settingsData }) {
   const [temperatureRange, setTemperatureRange] = useState({
@@ -81,7 +83,7 @@ export default function Settings({ settingsData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Settings</h3>
+      {/* <h3>Settings</h3> */}
 
       <div>
         <p>Temperature Range</p>
@@ -137,7 +139,9 @@ export default function Settings({ settingsData }) {
         </label>
       </div>
 
-      <button type="submit">Save</button>
+      <Button type="submit" variant="save">
+        Save
+      </Button>
     </form>
   );
 }

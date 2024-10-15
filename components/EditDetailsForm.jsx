@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Button from "./Button";
 
 export default function EditDetailsForm({ room }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -74,7 +75,9 @@ export default function EditDetailsForm({ room }) {
 
   return (
     <>
-      <button onClick={handleEdit}>{isEditing ? "Cancel" : "Edit"}</button>
+      <Button variant={isEditing ? "cancel" : "edit"} onClick={handleEdit}>
+        {isEditing ? "Cancel" : "Edit"}
+      </Button>
       <div>
         {isEditing ? (
           <form onSubmit={handleSubmit}>
@@ -95,7 +98,9 @@ export default function EditDetailsForm({ room }) {
                 onChange={handleHumidityChange}
               />
             </h4>
-            <button type="submit">Save</button>
+            <Button type="submit" variant="save">
+              Save
+            </Button>
           </form>
         ) : (
           <div>
