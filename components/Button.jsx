@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  color: white;
+  color: #000000;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0 6px 3px rgba(0, 0, 0, 0.2);
 
   background-color: ${(props) =>
-    props.variant === "save"
-      ? "#4caf50"
+    props.$variant === "save"
+      ? "#F3F9D2"
       : props.variant === "edit"
       ? "#007bff"
       : props.variant === "cancel"
@@ -20,8 +21,8 @@ const StyledButton = styled.button`
 
   &:hover {
     background-color: ${(props) =>
-      props.variant === "save"
-        ? "#4caf50"
+      props.$variant === "save"
+        ? "#A4F9C8"
         : props.variant === "edit"
         ? "#007bff"
         : props.variant === "cancel"
@@ -39,7 +40,7 @@ export default function Button({
   onClick,
 }) {
   return (
-    <StyledButton type={type} variant={variant} onClick={onClick}>
+    <StyledButton type={type} $variant={variant} onClick={onClick}>
       {children}
     </StyledButton>
   );

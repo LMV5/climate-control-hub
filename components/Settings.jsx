@@ -5,6 +5,69 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 import Button from "./Button";
 
+const FormContainer = styled.form`
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+`;
+
+const FormTitle = styled.h2`
+  text-align: center;
+  padding-bottom: 20px;
+  color: #ebd8da;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+`;
+
+const RangeSection = styled.div`
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #0d0c1d;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(178, 178, 178, 0.2);
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+`;
+
+const Label = styled.label`
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ebd8da;
+`;
+
+const P = styled.p`
+  grid-column: span 2;
+  font-size: 1.1rem;
+  letter-spacing: 0.2rem;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #b9929f;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #000000;
+  color: #ebd8da;
+
+  &:focus {
+    border: 1px solid #f3f9d2;
+    box-shadow: 0 0 10px #f3f9d2;
+    outline: none;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+`;
+
 export default function Settings({ settingsData }) {
   const [temperatureRange, setTemperatureRange] = useState({
     min: settingsData?.temperatureRange?.min || 16,
@@ -82,14 +145,13 @@ export default function Settings({ settingsData }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* <h3>Settings</h3> */}
-
-      <div>
-        <p>Temperature Range</p>
-        <label>
+    <FormContainer onSubmit={handleSubmit}>
+      <FormTitle>Settings</FormTitle>
+      <RangeSection>
+        <P>Temperature:</P>
+        <Label>
           Min:
-          <input
+          <Input
             type="number"
             name="min"
             value={temperatureRange.min}
@@ -97,10 +159,10 @@ export default function Settings({ settingsData }) {
             max={temperatureRange.max}
             onChange={handleTemperatureRangeChange}
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Max:
-          <input
+          <Input
             type="number"
             name="max"
             value={temperatureRange.max}
@@ -108,14 +170,14 @@ export default function Settings({ settingsData }) {
             max={26}
             onChange={handleTemperatureRangeChange}
           />
-        </label>
-      </div>
+        </Label>
+      </RangeSection>
 
-      <div>
-        <p>Humidity Range</p>
-        <label>
+      <RangeSection>
+        <P>Humidity:</P>
+        <Label>
           Min:
-          <input
+          <Input
             type="number"
             name="min"
             value={humidityRange.min}
@@ -124,10 +186,10 @@ export default function Settings({ settingsData }) {
             step={5}
             onChange={handleHumidityRangeChange}
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Max:
-          <input
+          <Input
             type="number"
             name="max"
             value={humidityRange.max}
@@ -136,12 +198,14 @@ export default function Settings({ settingsData }) {
             step={5}
             onChange={handleHumidityRangeChange}
           />
-        </label>
-      </div>
+        </Label>
+      </RangeSection>
 
-      <Button type="submit" variant="save">
-        Save
-      </Button>
-    </form>
+      <ButtonContainer>
+        <Button type="submit" variant="save">
+          Save
+        </Button>
+      </ButtonContainer>
+    </FormContainer>
   );
 }

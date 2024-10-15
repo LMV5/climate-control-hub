@@ -42,9 +42,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: #0d0c1d;
 
     --primary-glow: radial-gradient(
       hsla(9, 100%, 50%, 0.4),
@@ -89,13 +87,7 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--background);
 }
 
 @media (prefers-color-scheme: dark) {
