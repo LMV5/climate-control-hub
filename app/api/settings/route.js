@@ -29,6 +29,8 @@ export const PUT = async (request) => {
     await connectDB();
     const updatedData = await request.json();
 
+    // find and update settings
+
     const settings = await Settings.findOneAndUpdate(
       {},
       {
@@ -37,6 +39,8 @@ export const PUT = async (request) => {
       },
       { new: true, upsert: true }
     );
+
+    // save changes in Room collection
 
     await Room.updateMany(
       {},

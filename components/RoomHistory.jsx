@@ -27,7 +27,7 @@ export default async function RoomHistory({ roomHistory }) {
                 <td>{new Date(record.changeAt).toLocaleDateString()}</td>
                 <td>{record.temperature} &deg; C</td>
                 <td>{record.humidity} %</td>
-                <td>{record.changeBy}</td>
+                {/* <td>{record.changeBy}</td> */}
               </tr>
             );
           })}

@@ -6,11 +6,11 @@ import { toast } from "react-toastify";
 export default function Settings({ settingsData }) {
   const [temperatureRange, setTemperatureRange] = useState({
     min: settingsData?.temperatureRange?.min || 16,
-    max: settingsData?.temperatureRange?.min || 26,
+    max: settingsData?.temperatureRange?.max || 26,
   });
   const [humidityRange, setHumidityRange] = useState({
     min: settingsData?.humidityRange?.min || 30,
-    max: settingsData?.humidityRange?.min || 60,
+    max: settingsData?.humidityRange?.max || 60,
   });
 
   const handleTemperatureRangeChange = (e) => {

@@ -32,12 +32,12 @@ export default function NavBar() {
       >
         Settings
       </Link>
-      <Link
+      {/* <Link
         href="/login"
         className={`${pathname === "/login" ? "active" : ""}`}
       >
         Login
-      </Link>
+      </Link> */}
     </StyledNav>
   );
 }

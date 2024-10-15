@@ -41,7 +41,7 @@ export default function HistoryTable({ history, settings }) {
             <th>Date</th>
             <th>Temperature</th>
             <th>Humidity</th>
-            <th>Changed by</th>
+            {/* <th>Changed by</th> */}
           </tr>
         </thead>
         <tbody>
@@ -67,7 +67,7 @@ function HistoryRow({ record }) {
       <td>{new Date(record.changeAt).toLocaleDateString()}</td>
       <td>{record.temperature} &deg; C</td>
       <td>{record.humidity} %</td>
-      <td>{record.changeBy}</td>
+      {/* <td>{record.changeBy}</td> */}
     </tr>
   );
 }
