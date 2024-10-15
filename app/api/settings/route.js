@@ -1,5 +1,6 @@
 import connectDB from "@/config/database";
 import Settings from "@/models/Settings";
+import Room from "@/models/Room";
 
 export const GET = async (request) => {
   try {
@@ -26,21 +27,36 @@ export const GET = async (request) => {
 export const PUT = async (request) => {
   try {
     await connectDB();
-
     const updatedData = await request.json();
 
     const settings = await Settings.findOneAndUpdate(
       {},
       {
-        language: updatedData.language,
-        // temperatureUnit: updatedData.temperatureUnit,
-        // temperatureRange: updatedData.temperatureRange,
-        // humidityRange: updatedData.humidityRange,
+        temperatureRange: updatedData.temperatureRange,
+        humidityRange: updatedData.humidityRange,
       },
       { new: true, upsert: true }
     );
 
-    return new Response(JSON.stringify(settings), { status: 200 });
+    await Room.updateMany(
+      {},
+      {
+        $set: {
+          temperatureRange: {
+            min: settings.temperatureRange.min,
+            max: settings.temperatureRange.max,
+          },
+          humidityRange: {
+            min: settings.humidityRange.min,
+            max: settings.humidityRange.max,
+          },
+        },
+      }
+    );
+
+    return new Response(JSON.stringify(settings), {
+      status: 200,
+    });
   } catch (error) {
     console.error("Error updating settings:", error);
     return new Response("Something went wrong", { status: 500 });

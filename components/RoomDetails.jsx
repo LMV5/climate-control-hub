@@ -6,7 +6,7 @@ function RoomDetails({ room, roomHistory, settings }) {
     <div>
       <p>IMAGE</p>
       <p>{room.name}</p>
-      <EditDetailsForm room={room} settings={settings} />
+      <EditDetailsForm room={room} />
       <div>
         <RoomHistory roomHistory={roomHistory} settings={settings} />
       </div>

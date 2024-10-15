@@ -3,9 +3,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const defaultTemperatureRange = { min: 16, max: 26 };
-const defaultHumidityRange = { min: 30, max: 60 };
-
 export default function EditDetailsForm({ room }) {
   const [isEditing, setIsEditing] = useState(false);
   const [temperature, setTemperature] = useState(room.currentTemperature);
@@ -19,12 +16,12 @@ export default function EditDetailsForm({ room }) {
   function handleTemperatureChange(e) {
     const newTemperature = +e.target.value;
 
-    if (newTemperature < defaultTemperatureRange.min) {
+    if (newTemperature < room.temperatureRange.min) {
       toast.error("Temperature cannot be lower than the minimum allowed value");
-      setTemperature(defaultTemperatureRange.min);
-    } else if (newTemperature > defaultTemperatureRange.max) {
+      setTemperature(room.temperatureRange.min);
+    } else if (newTemperature > room.temperatureRange.max) {
       toast.error("Temperature exceeds the maximum allowed value");
-      setTemperature(defaultTemperatureRange.max);
+      setTemperature(room.temperatureRange.max);
     } else {
       setTemperature(newTemperature);
     }
@@ -33,12 +30,12 @@ export default function EditDetailsForm({ room }) {
   function handleHumidityChange(e) {
     const newHumidity = +e.target.value;
 
-    if (newHumidity < defaultHumidityRange.min) {
+    if (newHumidity < room.humidityRange.min) {
       toast.error("Humidity cannot be lower than the minimum allowed value");
-      setHumidity(defaultHumidityRange.min);
-    } else if (newHumidity > defaultHumidityRange.max) {
+      setHumidity(room.humidityRange.min);
+    } else if (newHumidity > room.humidityRange.max) {
       toast.error("Humidity exceeds the maximum allowed value");
-      setHumidity(defaultHumidityRange.max);
+      setHumidity(room.humidityRange.max);
     } else {
       setHumidity(newHumidity);
     }

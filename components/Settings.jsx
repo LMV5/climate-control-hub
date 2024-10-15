@@ -4,7 +4,30 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export default function Settings({ settingsData }) {
-  const [language, setLanguage] = useState(settingsData?.language || "en");
+  const [temperatureRange, setTemperatureRange] = useState({
+    min: settingsData?.temperatureRange?.min || 16,
+    max: settingsData?.temperatureRange?.min || 26,
+  });
+  const [humidityRange, setHumidityRange] = useState({
+    min: settingsData?.humidityRange?.min || 30,
+    max: settingsData?.humidityRange?.min || 60,
+  });
+
+  const handleTemperatureRangeChange = (e) => {
+    const { name, value } = e.target;
+    setTemperatureRange((prevRange) => ({
+      ...prevRange,
+      [name]: parseInt(value),
+    }));
+  };
+
+  const handleHumidityRangeChange = (e) => {
+    const { name, value } = e.target;
+    setHumidityRange((prevRange) => ({
+      ...prevRange,
+      [name]: parseInt(value),
+    }));
+  };
 
   useEffect(() => {
     async function fetchSettings() {
@@ -19,7 +42,8 @@ export default function Settings({ settingsData }) {
 
         if (data.length > 0) {
           const settings = data[0];
-          setLanguage(settings.language);
+          setTemperatureRange(settings.temperatureRange);
+          setHumidityRange(settings.humidityRange);
         }
       } catch (error) {
         toast.error("Error fetching settings");
@@ -29,15 +53,12 @@ export default function Settings({ settingsData }) {
     fetchSettings();
   }, []);
 
-  function handleLanguageChange(e) {
-    setLanguage(e.target.value);
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
 
     const updatedData = {
-      language,
+      temperatureRange,
+      humidityRange,
     };
 
     try {
@@ -62,132 +83,61 @@ export default function Settings({ settingsData }) {
     <form onSubmit={handleSubmit}>
       <h3>Settings</h3>
 
-      {/* <div>
-        <p>Temperature Unit</p>
+      <div>
+        <p>Temperature Range</p>
         <label>
+          Min:
           <input
-            type="radio"
-            value="Celsius"
-            checked={temperatureUnit === "Celsius"}
-            onChange={handleTemperatureUnit}
+            type="number"
+            name="min"
+            value={temperatureRange.min}
+            min={16}
+            max={temperatureRange.max}
+            onChange={handleTemperatureRangeChange}
           />
-          Celsius
         </label>
         <label>
+          Max:
           <input
-            type="radio"
-            value="Fahrenheit"
-            checked={temperatureUnit === "Fahrenheit"}
-            onChange={handleTemperatureUnit}
+            type="number"
+            name="max"
+            value={temperatureRange.max}
+            min={temperatureRange.min}
+            max={26}
+            onChange={handleTemperatureRangeChange}
           />
-          Fahrenheit
         </label>
-      </div> */}
+      </div>
 
       <div>
-        <p>Language</p>
+        <p>Humidity Range</p>
         <label>
+          Min:
           <input
-            type="radio"
-            value="en"
-            checked={language === "en"}
-            onChange={handleLanguageChange}
+            type="number"
+            name="min"
+            value={humidityRange.min}
+            min={30}
+            max={humidityRange.max}
+            step={5}
+            onChange={handleHumidityRangeChange}
           />
-          English
         </label>
         <label>
+          Max:
           <input
-            type="radio"
-            value="slo"
-            checked={language === "slo"}
-            onChange={handleLanguageChange}
+            type="number"
+            name="max"
+            value={humidityRange.max}
+            min={humidityRange.min}
+            max={60}
+            step={5}
+            onChange={handleHumidityRangeChange}
           />
-          Slovenian
         </label>
       </div>
 
       <button type="submit">Save</button>
     </form>
   );
-}
-
-// const handleTemperatureRangeChange = (e) => {
-//   const { name, value } = e.target;
-//   setTemperatureRange((prevRange) => ({
-//     ...prevRange,
-//     [name]: parseInt(value),
-//   }));
-// };
-
-// const handleHumidityRangeChange = (e) => {
-//   const { name, value } = e.target;
-//   setHumidityRange((prevRange) => ({
-//     ...prevRange,
-//     [name]: parseInt(value),
-//   }));
-// };
-
-// const [temperatureRange, setTemperatureRange] = useState({
-//   min: settingsData?.temperatureRange?.min || 16,
-//   max: settingsData?.temperatureRange?.min || 26,
-// });
-// const [humidityRange, setHumidityRange] = useState({
-//   min: settingsData?.humidityRange?.min || 30,
-//   max: settingsData?.humidityRange?.min || 60,
-// });
-
-{
-  /* <div>
-  <p>Temperature Range</p>
-  <label>
-    Min:
-    <input
-      type="number"
-      name="min"
-      value={temperatureRange.min}
-      min={16}
-      max={temperatureRange.max}
-      onChange={handleTemperatureRangeChange}
-    />
-  </label>
-  <label>
-    Max:
-    <input
-      type="number"
-      name="max"
-      value={temperatureRange.max}
-      min={temperatureRange.min}
-      max={26}
-      onChange={handleTemperatureRangeChange}
-    />
-  </label>
-</div>
-
-<div>
-  <p>Humidity Range</p>
-  <label>
-    Min:
-    <input
-      type="number"
-      name="min"
-      value={humidityRange.min}
-      min={30}
-      max={humidityRange.max}
-      step={5}
-      onChange={handleHumidityRangeChange}
-    />
-  </label>
-  <label>
-    Max:
-    <input
-      type="number"
-      name="max"
-      value={humidityRange.max}
-      min={humidityRange.min}
-      max={60}
-      step={5}
-      onChange={handleHumidityRangeChange}
-    />
-  </label>
-</div> */
 }
