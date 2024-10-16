@@ -11,7 +11,7 @@ export default async function Page() {
   const settings = settingsArray[0];
 
   if (!history) {
-    return <div>History is empty</div>;
+    return <p>History is empty</p>;
   }
 
   return (
