@@ -8,15 +8,14 @@ export default async function RoomHistory({ roomHistory }) {
   }
 
   return (
-    <div>
-      <h2>History</h2>
-      <table>
+    <div className="history__container">
+      <h4 className="title">Room Change History</h4>
+      <table className="table">
         <thead>
           <tr>
             <th>Date</th>
             <th>Temperature</th>
             <th>Humidity</th>
-            <th>Changed by</th>
           </tr>
         </thead>
 
@@ -25,9 +24,8 @@ export default async function RoomHistory({ roomHistory }) {
             return (
               <tr key={record._id}>
                 <td>{new Date(record.changeAt).toLocaleDateString()}</td>
-                <td>{record.temperature} &deg; C</td>
+                <td>{record.temperature} &deg;C</td>
                 <td>{record.humidity} %</td>
-                {/* <td>{record.changeBy}</td> */}
               </tr>
             );
           })}

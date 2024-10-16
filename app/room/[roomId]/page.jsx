@@ -12,7 +12,6 @@ const Page = async ({ params }) => {
   const roomHistory = await getRoomHistory(roomId);
   const settingsArray = await getSettings();
   const settings = settingsArray[0];
-  console.log(room);
 
   if (!room) {
     return <div>Room not found</div>;
