@@ -201,7 +201,7 @@ export default function Settings({ settingsData }) {
       </RangeSection>
 
       <ButtonContainer>
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="save">
           Save
         </Button>
       </ButtonContainer>

@@ -7,7 +7,7 @@ export default async function Page() {
   const settings = await getSettings();
 
   if (!settings) {
-    return <div>Settings not found</div>;
+    return <p>Settings not found</p>;
   }
 
   return (

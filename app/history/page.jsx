@@ -15,9 +15,9 @@ export default async function Page() {
   }
 
   return (
-    <div>
-      <h2>History</h2>
+    <>
+      <h2 className="title">History</h2>
       <HistoryTable history={history} settings={settings} />
-    </div>
+    </>
   );
 }

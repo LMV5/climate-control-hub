@@ -12,7 +12,8 @@ const StyledNav = styled.nav`
 const StyledLink = styled(Link)`
   position: relative;
   padding: 0.5rem 1rem;
-  color: white;
+  color: #ebd8da;
+  letter-spacing: 0.2rem;
 
   &:after {
     content: "";

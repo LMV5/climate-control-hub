@@ -9,8 +9,6 @@ import { useRouter } from "next/navigation";
 const FormSection = styled.form`
   margin: 20px 0;
   padding: 15px;
-  border: 1px solid #b9929f;
-  background-color: #000;
   border-radius: 8px;
   box-shadow: 0 1px 5px rgba(178, 178, 178, 0.2);
 `;
@@ -30,7 +28,6 @@ const Input = styled.input`
   border: 1px solid #b9929f;
   border-radius: 4px;
   font-size: 16px;
-  background-color: #000;
   color: #ebd8da;
 
   &:focus {
@@ -38,6 +35,12 @@ const Input = styled.input`
     box-shadow: 0 0 10px #f3f9d2;
     outline: none;
   }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.3rem;
 `;
 
 export default function EditDetailsForm({ room }) {
@@ -126,9 +129,14 @@ export default function EditDetailsForm({ room }) {
 
   return (
     <>
-      <Button variant="back" onClick={handleBack}>
-        &larr; Back
-      </Button>
+      <ButtonContainer>
+        <Button variant="back" onClick={handleBack}>
+          &larr; Back
+        </Button>
+        <Button variant={isEditing ? "cancel" : "edit"} onClick={handleEdit}>
+          {isEditing ? "Cancel" : "Edit"}
+        </Button>
+      </ButtonContainer>
       {isEditing ? (
         <FormSection onSubmit={handleSubmit}>
           <Title>
@@ -148,7 +156,7 @@ export default function EditDetailsForm({ room }) {
               onChange={handleHumidityChange}
             />
           </Title>
-          <Button type="submit" variant="primary">
+          <Button type="submit" variant="save">
             Save
           </Button>
         </FormSection>
@@ -163,9 +171,6 @@ export default function EditDetailsForm({ room }) {
           </Title>
         </div>
       )}
-      <Button variant={isEditing ? "cancel" : "edit"} onClick={handleEdit}>
-        {isEditing ? "Cancel" : "Edit"}
-      </Button>
     </>
   );
 }

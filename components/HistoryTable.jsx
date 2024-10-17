@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   border: 1px solid #f3f9d2;
   border-radius: 8px;
   box-shadow: 0 1px 5px rgba(178, 178, 178, 0.2);
-  width: 50%;
 `;
 
 const SortContainer = styled.div`
@@ -47,6 +46,10 @@ const TableHeader = styled.th`
 const TableCell = styled.td`
   padding: 10px;
   border-bottom: 1px solid #f3f9d2;
+`;
+
+const TableCellCentered = styled(TableCell)`
+  text-align: center;
 `;
 
 const NoRecordsMessage = styled.td`
@@ -117,8 +120,8 @@ function HistoryRow({ record }) {
     <tr>
       <TableCell>{record.roomId.name}</TableCell>
       <TableCell>{new Date(record.changeAt).toLocaleDateString()}</TableCell>
-      <TableCell>{record.temperature} &deg; C</TableCell>
-      <TableCell>{record.humidity} %</TableCell>
+      <TableCellCentered>{record.temperature} &deg; C</TableCellCentered>
+      <TableCellCentered>{record.humidity} %</TableCellCentered>
     </tr>
   );
 }

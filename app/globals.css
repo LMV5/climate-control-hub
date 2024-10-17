@@ -84,10 +84,27 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  height: 100%;
+  margin: 0;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   background: var(--background);
+}
+
+nav {
+  align-self: end;
+}
+
+main {
+  flex: 1;
+  margin: 0 auto;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -101,13 +118,8 @@ a {
   color: #fff;
 }
 
-.active {
-  color: #ff2701;
-}
-
 .title {
   color: #ebd8da;
-  margin-bottom: 1rem;
   letter-spacing: 0.5rem;
   text-align: center;
   padding: 20px;
@@ -127,6 +139,9 @@ a {
 
 .halfWidth {
   flex: 1;
+  min-width: 30rem;
+  max-width: 50rem;
+  box-sizing: border-box;
 }
 
 .history__container {

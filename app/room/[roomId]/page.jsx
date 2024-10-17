@@ -23,13 +23,13 @@ const Page = async ({ params }) => {
   };
 
   return (
-    <div>
+    <>
       <RoomDetails
         room={cleanRoom}
         roomHistory={roomHistory}
         settings={settings}
       />
-    </div>
+    </>
   );
 };
 
