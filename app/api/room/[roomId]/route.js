@@ -21,10 +21,18 @@ export const GET = async (request, { params }) => {
       _id: room._id,
     };
 
-    return new Response(JSON.stringify({ room: cleanRoom, roomHistory }), {
-      status: 200,
-    });
+    const response = new Response(
+      JSON.stringify({ room: cleanRoom, roomHistory }),
+      {
+        status: 200,
+      }
+    );
+
+    // response.headers.set("Cache-Control", "public, max-age=3600, immutable");
+
+    return response;
   } catch (error) {
+    console.error("Error fetching room details:", error);
     return new Response("Something went wrong", { status: 500 });
   }
 };
@@ -67,6 +75,7 @@ export const PUT = async (request, { params }) => {
 
     return new Response(JSON.stringify(updatedRoom), { status: 200 });
   } catch (error) {
+    console.error("Error updating room:", error);
     return new Response("Something went wrong", { status: 500 });
   }
 };

@@ -17,7 +17,13 @@ export const GET = async (request) => {
       _id: record._id.toString(),
     }));
 
-    return new Response(JSON.stringify(cleanSettings), { status: 200 });
+    const response = new Response(JSON.stringify(cleanSettings), {
+      status: 200,
+    });
+
+    // response.headers.set("Cache-Control", "public, max-age=3600, immutable");
+
+    return response;
   } catch (error) {
     console.error("Error fetching settings:", error);
     return new Response("Something went wrong", { status: 500 });
@@ -58,9 +64,13 @@ export const PUT = async (request) => {
       }
     );
 
-    return new Response(JSON.stringify(settings), {
+    const response = new Response(JSON.stringify(settings), {
       status: 200,
     });
+
+    // response.headers.set("Cache-Control", "no-store");
+
+    return response;
   } catch (error) {
     console.error("Error updating settings:", error);
     return new Response("Something went wrong", { status: 500 });

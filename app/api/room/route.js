@@ -11,7 +11,11 @@ export const GET = async (request) => {
 
     if (!rooms) return new Response("Rooms not found", { status: 404 });
 
-    return new Response(JSON.stringify(rooms), { status: 200 });
+    const response = new Response(JSON.stringify(rooms), { status: 200 });
+
+    // response.headers.set("Cache-Control", "public, max-age=3600, immutable");
+
+    return response;
   } catch (error) {
     return new Response("Something went wrong", { status: 500 });
   }

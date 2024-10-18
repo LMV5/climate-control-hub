@@ -26,13 +26,14 @@ const SortContainer = styled.div`
 const Label = styled.label`
   margin-top: 0.3rem;
   letter-spacing: 0.2rem;
+  color: #ebd8da;
 `;
 
 const Select = styled.select`
   padding: 5px;
   border: 1px solid #f3f9d2;
   border-radius: 4px;
-  color: #ebd8da;
+  color: #000;
 `;
 
 const Table = styled.table`

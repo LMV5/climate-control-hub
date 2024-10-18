@@ -14,8 +14,15 @@ export const GET = async (request, { params }) => {
     if (!history) return new Response("History not found", { status: 404 });
     if (!room) return new Response("Room not found", { status: 404 });
 
-    return new Response(JSON.stringify({ history, room }), { status: 200 });
+    const response = new Response(JSON.stringify({ history, room }), {
+      status: 200,
+    });
+
+    // response.headers.set("Cache-Control", "public, max-age=3600, immutable");
+
+    return response;
   } catch (error) {
+    console.error("Error fetching history and room:", error);
     return new Response("Something went wrong", { status: 500 });
   }
 };
