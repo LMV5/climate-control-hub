@@ -1,3 +1,7 @@
 export default function Loading() {
-  return <p>LOADING...</p>;
+  return (
+    <p className="text-paleRed mb-6 text-center text-xl uppercase tracking-widest">
+      LOADING...
+    </p>
+  );
 }

@@ -8,7 +8,7 @@ export default async function RoomHistory({ roomHistory }) {
   }
 
   return (
-    <div className="mt-5 rounded-lg bg-white p-4 shadow-md">
+    <div className="mt-5 rounded-lg p-4 shadow-[0_1px_5px_rgba(178,178,178,0.2)]">
       <h4 className="text-paleRed mb-4 text-center text-lg uppercase tracking-widest">
         Room Change History
       </h4>

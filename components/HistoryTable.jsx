@@ -7,61 +7,11 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// const Wrapper = styled.div`
-//   margin: 20px 0;
-//   padding: 15px;
-//   border: 1px solid #f3f9d2;
-//   border-radius: 8px;
-//   box-shadow: 0 1px 5px rgba(178, 178, 178, 0.2);
-// `;
-
-// const SortContainer = styled.div`
-//   display: flex;
-//   justify-content: flex-end;
-//   margin: 1rem 0;
-//   gap: 1.2rem;
-// `;
-
-// const Label = styled.label`
-//   margin-top: 0.3rem;
-//   letter-spacing: 0.2rem;
-//   color: #ebd8da;
-// `;
-
 // const Select = styled.select`
 //   padding: 5px;
 //   border: 1px solid #f3f9d2;
 //   border-radius: 4px;
 //   color: #000;
-// `;
-
-// const Table = styled.table`
-//   width: 100%;
-//   border-collapse: collapse;
-//   color: #ebd8da;
-// `;
-
-// const TableHeader = styled.th`
-//   padding: 10px;
-//   border-bottom: 1px solid #f3f9d2;
-//   text-align: left;
-//   color: #000;
-//   background-color: #f3f9d2aa;
-// `;
-
-// const TableCell = styled.td`
-//   padding: 10px;
-//   border-bottom: 1px solid #f3f9d2;
-// `;
-
-// const TableCellCentered = styled(TableCell)`
-//   text-align: center;
-// `;
-
-// const NoRecordsMessage = styled.td`
-//   text-align: center;
-//   padding: 20px;
-//   color: #f3f9d2;
 // `;
 
 const convertObjectToArray = (obj) => {
@@ -83,7 +33,7 @@ export default function HistoryTable({ history }) {
   });
 
   return (
-    <div className="border-softYellow my-5 rounded-lg border p-4 shadow-sm">
+    <div className="my-5 rounded-lg p-4 shadow-[0_1px_5px_rgba(178,178,178,0.2)]">
       <div className="mb-4 flex justify-end gap-5">
         <label
           htmlFor="sortOption"
@@ -95,7 +45,7 @@ export default function HistoryTable({ history }) {
           id="sortOption"
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="border-softYellow rounded-md border p-2 text-black"
+          className="focus:border-paleYellow bg-paleYellowOpacity rounded-md border p-1 text-black"
         >
           <option value="">No sorting</option>
           <option value="date">Sort by date</option>
@@ -105,16 +55,16 @@ export default function HistoryTable({ history }) {
       <table className="text-paleRed w-full border-collapse">
         <thead>
           <tr>
-            <th className="border-softYellow bg-softYellow/50 border-b p-3 text-left text-black">
+            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
               Room
             </th>
-            <th className="border-softYellow bg-softYellow/50 border-b p-3 text-left text-black">
+            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
               Date
             </th>
-            <th className="border-softYellow bg-softYellow/50 border-b p-3 text-left text-black">
+            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
               Temperature
             </th>
-            <th className="border-softYellow bg-softYellow/50 border-b p-3 text-left text-black">
+            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
               Humidity
             </th>
           </tr>
@@ -126,7 +76,7 @@ export default function HistoryTable({ history }) {
             ))
           ) : (
             <tr>
-              <td colSpan="4" className="text-softYellow p-5 text-center">
+              <td colSpan="4" className="border-paleYellow border-b p-2">
                 No records found
               </td>
             </tr>
@@ -140,16 +90,18 @@ export default function HistoryTable({ history }) {
 function HistoryRow({ record }) {
   return (
     <tr>
-      <td className="border-softYellow border-b p-3">
+      <td className="border-paleYellow border-b p-2">
         {capitalizeFirstLetter(record.roomId.name)}
       </td>
-      <td className="border-softYellow border-b p-3">
+      <td className="border-paleYellow border-b p-2">
         {new Date(record.changeAt).toLocaleDateString()}
       </td>
-      <td className="border-softYellow border-b p-3">
+      <td className="border-paleYellow border-b p-2 text-center">
         {record.temperature} &deg; C
       </td>
-      <td className="border-softYellow border-b p-3">{record.humidity} %</td>
+      <td className="border-paleYellow border-b p-2 text-center">
+        {record.humidity} %
+      </td>
     </tr>
   );
 }
