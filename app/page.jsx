@@ -3,6 +3,13 @@
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
+const Container = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const H1 = styled.h1`
   color: #ebd8da;
@@ -19,11 +26,15 @@ export default function Page() {
   }
 
   return (
-    <>
+    <Container
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.4 }}
+    >
       <H1>Welcome to Climate Control Hub!</H1>
       <Button onClick={handleClick} variant="primary">
         Manage Rooms &rArr;
       </Button>
-    </>
+    </Container>
   );
 }

@@ -3,6 +3,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+function capitalizeFirstLetter(string) {
+  if (!string) return "";
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const Wrapper = styled.div`
   margin: 20px 0;
   padding: 15px;
@@ -20,6 +25,7 @@ const SortContainer = styled.div`
 
 const Label = styled.label`
   margin-top: 0.3rem;
+  letter-spacing: 0.2rem;
 `;
 
 const Select = styled.select`
@@ -62,7 +68,7 @@ const convertObjectToArray = (obj) => {
   return Object.values(obj);
 };
 
-export default function HistoryTable({ history, settings }) {
+export default function HistoryTable({ history }) {
   const [sortOption, setSortOption] = useState("");
   const historyArray = convertObjectToArray(history);
 
@@ -118,7 +124,7 @@ export default function HistoryTable({ history, settings }) {
 function HistoryRow({ record }) {
   return (
     <tr>
-      <TableCell>{record.roomId.name}</TableCell>
+      <TableCell>{capitalizeFirstLetter(record.roomId.name)}</TableCell>
       <TableCell>{new Date(record.changeAt).toLocaleDateString()}</TableCell>
       <TableCellCentered>{record.temperature} &deg; C</TableCellCentered>
       <TableCellCentered>{record.humidity} %</TableCellCentered>

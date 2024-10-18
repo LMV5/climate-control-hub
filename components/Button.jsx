@@ -10,7 +10,7 @@ const StyledButton = styled.button`
   box-shadow: 0 6px 3px rgba(0, 0, 0, 0.2);
   transition: background-color 0.2s ease-in, transform 0.1s ease;
   display: inline-block;
-  width: 6.1rem;
+  width: 6.2rem;
 
   margin-top: ${(props) => (props.$variant === "primary" ? "3rem" : "")};
   width: ${(props) => (props.$variant === "primary" ? "11rem" : "")};
@@ -46,6 +46,12 @@ const StyledButton = styled.button`
   &:active {
     transform: scale(0.95);
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &:focus {
+    border: 1px solid #edfb69;
+    box-shadow: 0 0 10px #edfb69;
+    outline: none;
   }
 `;
 
