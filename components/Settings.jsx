@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import styled from "styled-components";
 import Button from "./Button";
 
 const FormContainer = styled.form`

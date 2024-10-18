@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import styled from "styled-components";
 
 function capitalizeFirstLetter(string) {
   if (!string) return "";

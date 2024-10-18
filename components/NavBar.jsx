@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styled from "styled-components";
 
 const StyledNav = styled.nav`
   display: flex;

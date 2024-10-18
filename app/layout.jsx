@@ -1,5 +1,5 @@
 import NavBar from "@/components/NavBar";
-import "./globals.css";
+import "../assets/styles/globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
