@@ -7,13 +7,6 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// const Select = styled.select`
-//   padding: 5px;
-//   border: 1px solid #f3f9d2;
-//   border-radius: 4px;
-//   color: #000;
-// `;
-
 const convertObjectToArray = (obj) => {
   return Object.values(obj);
 };
@@ -55,16 +48,28 @@ export default function HistoryTable({ history }) {
       <table className="text-paleRed w-full border-collapse">
         <thead>
           <tr>
-            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
+            <th
+              scope="col"
+              className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black"
+            >
               Room
             </th>
-            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
+            <th
+              scope="col"
+              className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black"
+            >
               Date
             </th>
-            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
+            <th
+              scope="col"
+              className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black"
+            >
               Temperature
             </th>
-            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
+            <th
+              scope="col"
+              className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black"
+            >
               Humidity
             </th>
           </tr>

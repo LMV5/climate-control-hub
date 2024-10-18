@@ -8,21 +8,29 @@ export default function NavBar() {
 
   return (
     <nav className="flex h-[2.3rem] gap-8">
-      <NavLink href="/" isActive={pathname === "/"}>
-        Home page
-      </NavLink>
-      <NavLink
-        href="/room"
-        isActive={pathname === "/room" || pathname.startsWith("/room/")}
-      >
-        Rooms
-      </NavLink>
-      <NavLink href="/history" isActive={pathname === "/history"}>
-        History
-      </NavLink>
-      <NavLink href="/settings" isActive={pathname === "/settings"}>
-        Settings
-      </NavLink>
+      <ul className="flex gap-8">
+        <NavLink href="/" isActive={pathname === "/"}>
+          Home page
+        </NavLink>
+      </ul>
+      <ul className="flex gap-8">
+        <NavLink
+          href="/room"
+          isActive={pathname === "/room" || pathname.startsWith("/room/")}
+        >
+          Rooms
+        </NavLink>
+      </ul>
+      <ul className="flex gap-8">
+        <NavLink href="/history" isActive={pathname === "/history"}>
+          History
+        </NavLink>
+      </ul>
+      <ul className="flex gap-8">
+        <NavLink href="/settings" isActive={pathname === "/settings"}>
+          Settings
+        </NavLink>
+      </ul>
     </nav>
   );
 }

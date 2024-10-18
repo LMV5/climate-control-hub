@@ -10,13 +10,13 @@ export default function error() {
     router.back();
   }
   return (
-    <>
+    <div role="alert">
       <p>The page you are looking for does not exist</p>;
       <div>
         <Button variant="back" onClick={handleBack}>
           &larr; Back
         </Button>
       </div>
-    </>
+    </div>
   );
 }

@@ -8,20 +8,29 @@ export default async function RoomHistory({ roomHistory }) {
   }
 
   return (
-    <div className="mt-5 rounded-lg p-4 shadow-[0_1px_5px_rgba(178,178,178,0.2)]">
-      <h4 className="text-paleRed mb-4 text-center text-lg uppercase tracking-widest">
+    <section className="mt-5 rounded-lg p-4 shadow-[0_1px_5px_rgba(178,178,178,0.2)]">
+      <h3 className="text-paleRed mb-4 text-center text-lg uppercase tracking-widest">
         Room Change History
-      </h4>
+      </h3>
       <table className="text-paleRed w-full border-collapse">
         <thead>
           <tr>
-            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
+            <th
+              scope="col"
+              className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black"
+            >
               Date
             </th>
-            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
+            <th
+              scope="col"
+              className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black"
+            >
               Temperature
             </th>
-            <th className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black">
+            <th
+              scope="col"
+              className="border-paleYellow bg-paleYellowOpacity border-b p-2 text-left text-black"
+            >
               Humidity
             </th>
           </tr>
@@ -45,6 +54,6 @@ export default async function RoomHistory({ roomHistory }) {
           })}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 }

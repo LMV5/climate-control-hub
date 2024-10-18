@@ -104,7 +104,7 @@ export default function EditDetailsForm({ room }) {
           onSubmit={handleSubmit}
           className="mt-5 rounded-lg p-4 shadow-[0_1px_5px_rgba(178,178,178,0.2)]"
         >
-          <h4 className="text-paleRed pb-5 text-center uppercase tracking-wider">
+          <h3 className="text-paleRed pb-5 text-center uppercase tracking-wider">
             Temperature:
             <input
               type="number"
@@ -112,8 +112,8 @@ export default function EditDetailsForm({ room }) {
               onChange={handleTemperatureChange}
               className="focus:border-paleYellow bg-darkBlue border-paleRed text-paleRed mt-1 w-full rounded-md border p-2 text-base focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
             />
-          </h4>
-          <h4 className="text-paleRed pb-5 text-center uppercase tracking-wider">
+          </h3>
+          <h3 className="text-paleRed pb-5 text-center uppercase tracking-wider">
             Humidity:{" "}
             <input
               type="number"
@@ -122,28 +122,28 @@ export default function EditDetailsForm({ room }) {
               onChange={handleHumidityChange}
               className="focus:border-paleYellow bg-darkBlue border-paleRed text-paleRed mt-1 w-full rounded-md border p-2 text-base focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
             />
-          </h4>
+          </h3>
           <Button type="submit" variant="save">
             Save
           </Button>
         </form>
       ) : (
-        <div className="mt-12 rounded-lg p-4 text-center shadow-[0_1px_5px_rgba(178,178,178,0.2)]">
-          <h4 className="text-paleRed uppercase tracking-wider">
+        <section className="mt-12 rounded-lg p-4 text-center shadow-[0_1px_5px_rgba(178,178,178,0.2)]">
+          <h3 className="text-paleRed uppercase tracking-wider">
             Current Temperature:{" "}
             <span className="text-paleRed rounded px-2 py-1 text-xl font-bold shadow-md">
               {roomData.currentTemperature}
             </span>{" "}
             &deg;C
-          </h4>
-          <h4 className="text-paleRed uppercase tracking-wider">
+          </h3>
+          <h3 className="text-paleRed uppercase tracking-wider">
             Current Humidity:{" "}
             <span className="text-paleRed rounded px-2 py-1 text-xl font-bold shadow-md">
               {roomData.currentHumidity}
             </span>{" "}
             %
-          </h4>
-        </div>
+          </h3>
+        </section>
       )}
     </>
   );
