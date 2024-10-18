@@ -2,45 +2,45 @@
 
 import { useState } from "react";
 import { toast } from "react-toastify";
-import Button from "./Button";
+import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 
-const FormSection = styled.form`
-  margin: 20px 0;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 5px rgba(178, 178, 178, 0.2);
-`;
+// const FormSection = styled.form`
+//   margin: 20px 0;
+//   padding: 15px;
+//   border-radius: 8px;
+//   box-shadow: 0 1px 5px rgba(178, 178, 178, 0.2);
+// `;
 
-const Title = styled.h4`
-  text-align: center;
-  padding-bottom: 20px;
-  color: #ebd8da;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-`;
+// const Title = styled.h4`
+//   text-align: center;
+//   padding-bottom: 20px;
+//   color: #ebd8da;
+//   letter-spacing: 0.2rem;
+//   text-transform: uppercase;
+// `;
 
-const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #b9929f;
-  border-radius: 4px;
-  font-size: 16px;
-  color: #000;
+// const Input = styled.input`
+//   width: 100%;
+//   padding: 8px;
+//   margin-top: 5px;
+//   border: 1px solid #b9929f;
+//   border-radius: 4px;
+//   font-size: 16px;
+//   color: #000;
 
-  &:focus {
-    border-color: #f3f9d2;
-    box-shadow: 0 0 10px #f3f9d2;
-    outline: none;
-  }
-`;
+//   &:focus {
+//     border-color: #f3f9d2;
+//     box-shadow: 0 0 10px #f3f9d2;
+//     outline: none;
+//   }
+// `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.3rem;
-`;
+// const ButtonContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 1.3rem;
+// `;
 
 export default function EditDetailsForm({ room }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -128,46 +128,55 @@ export default function EditDetailsForm({ room }) {
 
   return (
     <>
-      <ButtonContainer>
+      <div className="mt-5 flex justify-between">
         <Button variant="back" onClick={handleBack}>
           &larr; Back
         </Button>
         <Button variant={isEditing ? "cancel" : "edit"} onClick={handleEdit}>
           {isEditing ? "Cancel" : "Edit"}
         </Button>
-      </ButtonContainer>
+      </div>
       {isEditing ? (
-        <FormSection onSubmit={handleSubmit}>
-          <Title>
+        <form onSubmit={handleSubmit} className="my-5 rounded-lg p-4 shadow-md">
+          <h4 className="text-paleRed mb-5 text-center uppercase tracking-wider">
             Temperature:
-            <Input
+            <input
               type="number"
               value={temperature}
               onChange={handleTemperatureChange}
+              lassName="w-full p-2 mt-2 border border-softYellow rounded-md focus:outline-none focus:border-lightYellow focus:ring focus:ring-lightYellow"
             />
-          </Title>
-          <Title>
+          </h4>
+          <h4 className="text-paleRed mb-5 text-center uppercase tracking-wider">
             Humidity:{" "}
-            <Input
+            <input
               type="number"
               step={5}
               value={humidity}
               onChange={handleHumidityChange}
+              lassName="w-full p-2 mt-2 border border-softYellow rounded-md focus:outline-none focus:border-lightYellow focus:ring focus:ring-lightYellow"
             />
-          </Title>
+          </h4>
           <Button type="submit" variant="save">
             Save
           </Button>
-        </FormSection>
+        </form>
       ) : (
-        <div className="current-parameters">
-          <Title>
-            Current Temperature: <span>{roomData.currentTemperature}</span>{" "}
+        <div className="mt-12 text-center">
+          <h4 className="text-paleRed uppercase tracking-wider">
+            Current Temperature:{" "}
+            <span className="text-paleRed rounded px-2 py-1 text-xl font-bold shadow-md">
+              {roomData.currentTemperature}
+            </span>{" "}
             &deg;C
-          </Title>
-          <Title>
-            Current Humidity: <span>{roomData.currentHumidity}</span> %
-          </Title>
+          </h4>
+          <h4 className="text-paleRed uppercase tracking-wider">
+            Current Humidity:{" "}
+            <span className="text-paleRed rounded px-2 py-1 text-xl font-bold shadow-md">
+              {roomData.currentHumidity}
+            </span>{" "}
+            %
+          </h4>
         </div>
       )}
     </>

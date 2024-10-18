@@ -4,12 +4,14 @@ import RoomHistory from "./RoomHistory";
 function RoomDetails({ room, roomHistory, settings }) {
   return (
     <>
-      <h2 className="title">{room.name}</h2>
-      <div className="room__details">
-        <div className="halfWidth">
+      <h2 className="text-paleRed mb-6 text-center text-2xl uppercase tracking-widest">
+        {room.name}
+      </h2>
+      <div className="mx-8 flex justify-between gap-5">
+        <div className="min-w-[30rem] max-w-[50rem] flex-1">
           <EditDetailsForm room={room} />
         </div>
-        <div className="halfWidth">
+        <div className="min-w-[30rem] max-w-[50rem] flex-1">
           <RoomHistory roomHistory={roomHistory} settings={settings} />
         </div>
       </div>

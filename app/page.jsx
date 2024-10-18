@@ -24,11 +24,13 @@ export default function Page() {
   }
 
   return (
-    <Container>
-      <H1>Welcome to Climate Control Hub!</H1>
+    <div className="flex flex-col items-center pt-20">
+      <h1 className="text-paleRed mb-6 text-3xl uppercase tracking-wide">
+        Welcome to Climate Control Hub!
+      </h1>
       <Button onClick={handleClick} variant="primary">
         Manage Rooms &rArr;
       </Button>
-    </Container>
+    </div>
   );
 }
