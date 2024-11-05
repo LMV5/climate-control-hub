@@ -7,11 +7,11 @@ function RoomDetails({ room, roomHistory, settings }) {
       <h2 className="text-paleRed mb-6 text-center text-2xl uppercase tracking-widest">
         {room.name}
       </h2>
-      <div className="mx-8 flex justify-between gap-5">
-        <div className="min-w-[30rem] max-w-[50rem] flex-1">
+      <div className="mx-8 flex flex-col justify-between gap-5 lg:gap-10 lg:flex-row">
+        <div className="min-w-[20rem] ssm:min-w-[30rem] max-w-[30rem] ssm:max-w-[50rem] flex-1">
           <EditDetailsForm room={room} />
         </div>
-        <div className="min-w-[30rem] max-w-[50rem] flex-1">
+        <div className="min-w-[20rem] ssm:min-w-[30rem] max-w-[30rem] ssm:max-w-[50rem] flex-1">
           <RoomHistory roomHistory={roomHistory} settings={settings} />
         </div>
       </div>
