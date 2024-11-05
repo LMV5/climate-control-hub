@@ -25,8 +25,14 @@ function FloorPlan() {
     fetchRooms();
   }, []);
 
+  const handleKeyDown = (e, roomId) => {
+    if (e.key === "Enter" || e.key === " ") {
+      window.location.href = `/room/${roomId}`;
+    }
+  };
+
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <figure>
         <Image
           src="/plan.jpg"
@@ -48,8 +54,10 @@ function FloorPlan() {
             <polygon
               key={room._id}
               points={room.coordinates}
-              className="fill-transparent hover:fill-softGreen hover:opacity-50 pointer-events-auto cursor-pointer"
+              className="fill-transparent hover:fill-softGreen hover:opacity-50 pointer-events-auto cursor-pointer focus:fill-softGreen focus:opacity-50 focus:outline-none"
               onClick={() => window.location.href = `/room/${room._id}`}
+              tabIndex="0"
+              onKeyDown={(event) => handleKeyDown(event, room._id)}
             />
           ))}
         </svg>
@@ -59,76 +67,3 @@ function FloorPlan() {
 }
 
 export default FloorPlan;
-
-
-// "use client";
-
-// import Image from "next/image";
-// import { useState, useEffect } from "react";
-
-// function FloorPlan() {
-//   const [rooms, setRooms] = useState([]);
-//   const [hoveredArea, setHoveredArea] = useState(null);
-
-//   useEffect(() => {
-//     async function fetchRooms() {
-//       try {
-//         const response = await fetch("/api/room");
-        
-//         if (!response.ok) {
-//           throw new Error("Failed to fetch rooms");
-//         }
-
-//         const data = await response.json();
-//         setRooms(data);
-//       } catch (error) {
-//         console.error("Error fetching rooms:", error);
-//       }
-//     }
-
-//     fetchRooms();
-//   }, []);
-
-//   // function handleMouseEnter(roomName) {
-//   //   setHoveredArea(roomName);
-//   // }
-
-//   // function handleMouseLeave() {
-//   //   setHoveredArea(null);
-//   // }
-
-//   return (
-//     <div>
-//       <figure>
-//         <Image
-//           src="/plan.jpg"
-//           alt="floor plan"
-//           width={530}
-//           height={633}
-//           useMap="#imageMap"
-//           priority={true}
-//         />
-//       </figure>
-//       <figcaption>Floor plan of the apartment</figcaption>
-//       <map name="imageMap">
-//         {rooms.map((room) => (
-//           <area
-//             key={room._id}
-//             shape="poly"
-//             coords={room.coordinates}
-//             alt={room.name}
-//             href={`/room/${room._id}`}
-//             aria-label={`Go to ${room.name}`}
-//             style={{
-//               cursor: "pointer",
-//             }}
-//             // onMouseEnter={() => handleMouseEnter(room.name)}
-//             // onMouseLeave={handleMouseLeave}
-//           />
-//         ))}
-//       </map>
-//     </div>
-//   );
-// }
-
-// export default FloorPlan;

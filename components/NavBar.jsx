@@ -10,7 +10,7 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(prev => !prev);
   };
 
   const closeMenu = () => {
@@ -22,12 +22,12 @@ export default function NavBar() {
        <button
         className="block sm:hidden p-6 focus:outline-none text-2xl font-bold text-paleYellow"
         onClick={toggleMenu}
+        aria-label="Toggle menu"
       >
-        {isOpen ? "" : (<FaBars />
-        )}
+        {isOpen ? "" : <FaBars />}
       </button>
       <ul
-        className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 absolute sm:static top-0 left-0 w-full h-screen sm:h-auto bg-gray-800 sm:bg-transparent p-6 sm:p-0 transition-transform duration-300 ${
+        className={`z-50 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 absolute sm:static top-0 left-0 w-full h-screen sm:h-auto bg-gray-800 sm:bg-transparent p-6 sm:p-0 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0`}
         onClick={closeMenu}
@@ -35,27 +35,36 @@ export default function NavBar() {
         <button
         className="absolute top-4 right-4 p-2 text-2xl font-bold text-paleYellow focus:outline-none sm:hidden"
         onClick={closeMenu}
-      ><FaTimes />
+        aria-label="Close menu"
+      >
+        <FaTimes />
       </button>
         
-        <NavLink href="/" isActive={pathname === "/"}>
-          Home page
-        </NavLink>
+        <li>
+          <NavLink href="/" isActive={pathname === "/"}>
+            Home page
+          </NavLink>
+        </li>
   
-        <NavLink
-          href="/room"
-          isActive={pathname === "/room" || pathname.startsWith("/room/")}
-        >
-          Rooms
-        </NavLink>
+        <li>
+          <NavLink
+            href="/room"
+            isActive={pathname === "/room" || pathname.startsWith("/room/")}
+            >
+            Rooms
+          </NavLink>
+        </li>
      
-        <NavLink href="/history" isActive={pathname === "/history"}>
-          History
-        </NavLink>
-     
-        <NavLink href="/settings" isActive={pathname === "/settings"}>
-          Settings
-        </NavLink>
+        <li>
+          <NavLink href="/history" isActive={pathname === "/history"}>
+              History
+          </NavLink>
+        </li>
+        <li>
+            <NavLink href="/settings" isActive={pathname === "/settings"}>
+              Settings
+            </NavLink>
+        </li>
      </ul>
     </nav>
   );
