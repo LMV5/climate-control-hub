@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar";
 import "@/assets/styles/globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "Climate Control Hub",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
         <NavBar />
         <main>{children}</main>
         <ToastContainer />
+        <Analytics />
       </body>
     </html>
   );
