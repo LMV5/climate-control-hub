@@ -12,7 +12,8 @@ module.exports = {
         darkBlue: "#0d0c1d",
         paleYellow: "#f3f9d2",
         paleYellowOpacity: "#f3f9d2aa",
-        paleGrey: "#ebd8da", // 
+        paleGrey: "#ebd8da",
+        timberWolf: "#d3d0d0",
         silver: "#aaa7a7",
         slateGray: "#6c757d",
         aquamarine: "#A4F9C8",
