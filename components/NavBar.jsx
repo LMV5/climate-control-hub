@@ -74,7 +74,7 @@ function NavLink({ href, children, isActive }) {
   return (
     <Link
       href={href}
-      className={`text-paleRed relative px-4 py-2 tracking-widest ${
+      className={`text-paleGrey relative px-4 py-2 tracking-widest ${
         isActive ? "after:w-full" : "after:w-0"
       } after:bg-aquamarine after:duration-400 focus:border-paleYellow transition ease-in after:absolute after:bottom-0 after:left-0 after:h-[0.1rem] after:transition-all after:content-[''] hover:after:w-full`}
     >

@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <>
-      <h2 className="text-paleRed mb-6 text-center text-2xl uppercase tracking-widest">
+      <h2 className="text-paleGrey mb-6 text-center text-2xl uppercase tracking-widest">
         History
       </h2>
       <HistoryTable history={history} settings={settings} />

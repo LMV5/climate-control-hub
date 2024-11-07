@@ -41,14 +41,14 @@ function FloorPlan() {
           height={633}
           useMap="#imageMap"
           priority={true}
+          className="w-full h-auto"
         />
       </figure>
       
       <svg
-          width="530"
-          height="633"
           viewBox="0 0 530 633"
           className="absolute top-0 left-0 pointer-events-none"
+          preserveAspectRatio="xMidYMid meet"
         >
           {rooms.map((room) => (
             <polygon

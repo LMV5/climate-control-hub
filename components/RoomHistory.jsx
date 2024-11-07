@@ -1,11 +1,11 @@
 export default async function RoomHistory({ roomHistory }) {
    return (
     <section className="mt-5 rounded-lg p-4 shadow-[0_1px_5px_rgba(178,178,178,0.2)]">
-      <h3 className="text-paleRed mb-4 text-center text-lg uppercase tracking-widest">
+      <h3 className="text-paleGrey mb-4 text-center text-lg uppercase tracking-widest">
         Room Change History
       </h3>
       {roomHistory && roomHistory.length > 0 ? (
-       <table className="text-paleRed w-full border-collapse">
+       <table className="text-paleGrey w-full border-collapse">
         <thead>
           <tr>
             <th
@@ -47,7 +47,7 @@ export default async function RoomHistory({ roomHistory }) {
           })}
         </tbody>
       </table>)
-      : (<p className="text-center text-paleRed">No history yet</p>)}
+      : (<p className="text-center text-paleGrey">No history yet</p>)}
     </section>
   );
 }

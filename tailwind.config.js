@@ -10,14 +10,11 @@ module.exports = {
       colors: {
         black: "#000",
         darkBlue: "#0d0c1d",
-        white: "#fff",
         paleYellow: "#f3f9d2",
         paleYellowOpacity: "#f3f9d2aa",
-        timberWolf: "#d3d0d0",
-        paleRed: "#ebd8da",
+        paleGrey: "#ebd8da", // 
         silver: "#aaa7a7",
         slateGray: "#6c757d",
-        softYellow: "#edfb69",
         aquamarine: "#A4F9C8",
         softGreen: "#b9f98e",
         green: "#95e262",

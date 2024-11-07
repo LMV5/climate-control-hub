@@ -30,7 +30,7 @@ export default function HistoryTable({ history }) {
       <div className="mb-4 flex justify-end gap-5">
         <label
           htmlFor="sortOption"
-          className="text-paleRed mt-1 tracking-wider"
+          className="text-paleGrey mt-1 tracking-wider"
         >
           Sort by:{" "}
         </label>{" "}
@@ -45,7 +45,7 @@ export default function HistoryTable({ history }) {
           <option value="room">Sort by room</option>
         </select>
       </div>
-      <table className="text-paleRed w-full border-collapse">
+      <table className="text-paleGrey w-full border-collapse">
         <thead>
           <tr>
             <th

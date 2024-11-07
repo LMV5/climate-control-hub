@@ -82,7 +82,7 @@ export default function Settings({ settingsData }) {
 
   return (
     <>
-      <h2 className="text-paleRed mb-6 text-center text-2xl uppercase tracking-widest">
+      <h2 className="text-paleGrey mb-6 text-center text-2xl uppercase tracking-widest">
         Settings
       </h2>
       <form
@@ -90,10 +90,10 @@ export default function Settings({ settingsData }) {
         className="mx-auto max-w-lg rounded-lg p-5 shadow-[0_1px_5px_rgba(178,178,178,0.2)]"
       >
         <div className="mb-5 grid grid-cols-2 gap-4 rounded-md p-4 shadow-sm">
-          <p className="text-paleRed col-span-2 text-lg tracking-wide">
+          <p className="text-paleGrey col-span-2 text-lg tracking-wide">
             Temperature:
           </p>
-          <label className="text-paleRed mb-2 block font-bold">
+          <label className="text-paleGrey mb-2 block font-bold">
             Min:
             <input
               type="number"
@@ -102,10 +102,10 @@ export default function Settings({ settingsData }) {
               min={16}
               max={temperatureRange.max}
               onChange={handleTemperatureRangeChange}
-              className="border-paleYellow text-paleRed focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
+              className="border-paleYellow text-paleGrey focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
             />
           </label>
-          <label className="text-paleRed mb-2 block font-bold">
+          <label className="text-paleGrey mb-2 block font-bold">
             Max:
             <input
               type="number"
@@ -114,16 +114,16 @@ export default function Settings({ settingsData }) {
               min={temperatureRange.min}
               max={26}
               onChange={handleTemperatureRangeChange}
-              className="border-paleYellow text-paleRed focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
+              className="border-paleYellow text-paleGrey focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
             />
           </label>
         </div>
 
         <div className="mb-5 grid grid-cols-2 gap-4 rounded-md p-4 shadow-sm">
-          <p className="text-paleRed col-span-2 text-lg tracking-wide">
+          <p className="text-paleGrey col-span-2 text-lg tracking-wide">
             Humidity:
           </p>
-          <label className="text-paleRed mb-2 block font-bold">
+          <label className="text-paleGrey mb-2 block font-bold">
             Min:
             <input
               type="number"
@@ -133,10 +133,10 @@ export default function Settings({ settingsData }) {
               max={humidityRange.max}
               step={5}
               onChange={handleHumidityRangeChange}
-              className="border-paleYellow text-paleRed focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
+              className="border-paleYellow text-paleGrey focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
             />
           </label>
-          <label className="text-paleRed mb-2 block font-bold">
+          <label className="text-paleGrey mb-2 block font-bold">
             Max:
             <input
               type="number"
@@ -146,7 +146,7 @@ export default function Settings({ settingsData }) {
               max={60}
               step={5}
               onChange={handleHumidityRangeChange}
-              className="border-paleYellow text-paleRed focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
+              className="border-paleYellow text-paleGrey focus:border-paleYellow mt-1 w-full rounded-md border bg-black p-2 focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
             />
           </label>
         </div>

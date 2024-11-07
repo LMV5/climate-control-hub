@@ -7,7 +7,7 @@
   --white: #fff;
   --paleYellow: #f3f9d2;
   --paleYellowOpacity: #f3f9d2aa;
-  --paleRed: #ebd8da;
+  --paleGrey: #ebd8da;
   --boxShadow: #b2b2b233;
 }
 
@@ -28,7 +28,7 @@ body {
 
 @media (max-width: 600px) {
   html {
-    font-size: 70%; 
+    font-size: 80%; 
   }
 }
 
@@ -53,5 +53,5 @@ main {
 
 a {
   text-decoration: none;
-  color: var(--paleRed);
+  color: var(--paleGrey);
 }

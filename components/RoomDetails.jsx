@@ -4,7 +4,7 @@ import RoomHistory from "./RoomHistory";
 function RoomDetails({ room, roomHistory, settings }) {
   return (
     <>
-      <h2 className="text-paleRed mb-6 text-center text-2xl uppercase tracking-widest">
+      <h2 className="text-paleGrey mb-6 text-center text-2xl uppercase tracking-widest">
         {room.name}
       </h2>
       <div className="mx-8 flex flex-col justify-between gap-5 lg:gap-10 lg:flex-row">
