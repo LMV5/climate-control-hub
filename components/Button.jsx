@@ -19,12 +19,13 @@ export default function Button({
   const activeStyles =
     "active:scale-95 active:shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-200";
 
+  const buttonVariant = variantStyles[variant] || variantStyles.default;
+  
   return (
     <button
       type={type}
-      variant={variant}
       onClick={onClick}
-      className={`${baseStyles} ${sizeStyles} ${variantStyles[variant] || variantStyles.default} ${activeStyles}`}
+      className={`${baseStyles} ${sizeStyles} ${buttonVariant} ${activeStyles}`}
     >
       {children}
     </button>

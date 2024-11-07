@@ -3,7 +3,7 @@
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 
-export default function error() {
+export default function Error() {
   const router = useRouter();
 
   function handleBack() {
