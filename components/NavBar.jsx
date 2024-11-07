@@ -27,7 +27,7 @@ export default function NavBar() {
         {isOpen ? "" : <FaBars />}
       </button>
       <ul
-        className={`z-50 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 absolute sm:static top-0 left-0 w-full h-screen sm:h-auto bg-gray-800 sm:bg-transparent p-6 sm:p-0 transition-transform duration-300 ${
+        className={`z-50 text-2xl sm:text-xl flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 absolute sm:static top-0 left-0 w-full h-screen sm:h-auto bg-gray-800 sm:bg-transparent p-6 sm:p-0 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0`}
         onClick={closeMenu}
