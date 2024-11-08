@@ -62,6 +62,8 @@ export default function Settings({ settingsData }) {
       humidityRange,
     };
 
+    console.log("Sending updated data:", updatedData);
+
     try {
       const response = await fetch("/api/settings", {
         method: "PUT",
@@ -74,8 +76,13 @@ export default function Settings({ settingsData }) {
       if (!response.ok) {
         throw new Error("Cannot save settings");
       }
+
+      const result = await response.json();
+      console.log("Response from server:", result);
+
       toast.success("Changes saved");
     } catch (error) {
+      console.error("Error saving settings:", error);
       toast.error("Cannot save settings");
     }
   }

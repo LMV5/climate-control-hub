@@ -4,11 +4,13 @@ import Room from "@/models/Room";
 
 export const GET = async (request) => {
   try {
+    console.log("GET request to /api/settings");
     await connectDB();
 
     const settings = await Settings.find().lean();
 
     if (!settings || settings.length === 0) {
+      console.log("No settings found");
       return new Response("Settings not found", { status: 404 });
     }
 
@@ -16,6 +18,8 @@ export const GET = async (request) => {
       ...record,
       _id: record._id.toString(),
     }));
+
+    console.log("Settings found:", cleanSettings);
 
     const response = new Response(JSON.stringify(cleanSettings), {
       status: 200,
@@ -68,7 +72,7 @@ export const PUT = async (request) => {
       status: 200,
     });
 
-    // response.headers.set("Cache-Control", "no-store");
+    response.headers.set("Cache-Control", "no-store");
 
     return response;
   } catch (error) {

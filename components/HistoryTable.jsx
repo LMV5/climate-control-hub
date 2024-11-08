@@ -14,6 +14,7 @@ const convertObjectToArray = (obj) => {
 export default function HistoryTable({ history }) {
   const [sortOption, setSortOption] = useState("");
   const historyArray = convertObjectToArray(history);
+console.log(history);
 
   const sortedHistory = [...historyArray].sort((a, b) => {
     if (sortOption === "date") {
