@@ -21,7 +21,7 @@ export const GET = async (request) => {
       status: 200,
     });
 
-    // response.headers.set("Cache-Control", "public, max-age=3600, immutable");
+    response.headers.set("Cache-Control", "no-store");
 
     return response;
   } catch (error) {
